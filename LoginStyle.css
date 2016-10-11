@@ -1,0 +1,32 @@
+html
+{
+	text-align: center;
+	background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");
+	background-color: #7abdc9;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#login
+{
+	font-size: 1.2rem;
+}
+
+input[id$="field"]
+{
+	background-color: #a4d3db;
+	border: 2px ridge black;
+	opacity: 0.7;
+	border-radius: 10px;
+	padding: 5px;
+	font-family: "Courier New";
+	font-size: 1rem;
+}
+
+input[type="submit"]
+{
+	background-color: #4b8a96;
+	border: 2px solid black;
+	border-radius: 10px;
+	font-size: 1.2rem;
+	font-family: "Copperplate";
+}
