@@ -12,16 +12,6 @@ import cgi
 import cgitb
 cgitb.enable()
 
-def create_database():
-    conn = sqlite3.connect('weatherwindow.db')
-    cursor = conn.cursor()
-
-    cursor.execute('DROP TABLE IF EXISTS users')
-
-    cursor.execute('CREATE TABLE IF NOT EXISTS users(username varchar(30) primary key, password varchar(200), salt charchar(100))')
-
-    conn.commit()
-    conn.close()
 
 def insert_new_user(username,password):
     salt = str(datetime.datetime.now())
@@ -46,7 +36,7 @@ def insert_new_user(username,password):
 
 def user_check(): #Will include param for if new user or login access
 
-    insert_new_user('tom', 'fancy')
+    insert_new_user('Jieny', 'fancy')
     conn1 = sqlite3.connect('weatherwindow.db')
     cursor = conn1.cursor()
     for row in cursor.execute('SELECT * FROM users'):
@@ -55,8 +45,8 @@ def user_check(): #Will include param for if new user or login access
     conn1.commit()
     conn1.close()
 
-create_database()
-user_check()
+
+#user_check()
 
 print("Content-Type: text/html\n\n")
 print ()

@@ -8,27 +8,31 @@ import sqlite3
 cgitb.enable()
 
 def authenticate(username,password):
-    conn = sqlite3.connect('weatherwindow')
+    conn = sqlite3.connect('weatherwindow.db')
     cursor = conn.cursor()
 
-    result = conn.execute('SELECT * FROM users WHERE username=?', [username])
-    if result.arraysize == 1:
-        row = result.next()
-        encrypt_pw = row[1]
-        salt = row[2]
+    result = cursor.execute("SELECT * FROM users")# WHERE username=?", [username])
+    return result
+    #if result.arraysize == 1:
 
-        hashing = hashlib.md5()
-        hashing.update(password)
-        hashing.update(salt)
+     #   row = result.next()
+      #  encrypt_pw = row[1]
+       # salt = row[2]
 
-        digest = hashing.hexidigest()
+        #hashing = hashlib.md5()
+        #hashing.update(password)
+        #hashing.update(salt)
+
+        #digest = hashing.hexidigest()
 
 
 
-        return digest == encrypt_pw
-    else:
-        conn.close()
-        return False
+        #return digest == encrypt_pw
+    #else:
+    conn.close()
+       # return False
+
+
 
 
 
@@ -43,15 +47,18 @@ print ('''<html>
     </head>
     <body>''')
 
-#username = login_form['usernamefield'].value
-#password = login_form['passwordfield'].value
+if "usernamefield" not in login_form:
+    print ('<h1>We gotta problem kids </h1>')
+username = login_form.getvalue('usernamefield')
+password = login_form.getvalue('passwordfield')
 
-username = {'username':'boy'}
-password = {'password':'toy'}
-if authenticate(username,password):
-    print ('<h1>User ' + username + ' has been successfully authenticated!</h1>')
+result = authenticate(username,password)
+
+if result:
+    print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
 else:
     print ('<h1>Authentication Failed! </h1>')
+
 
 print ('''
     </body>
