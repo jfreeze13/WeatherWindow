@@ -1,0 +1,21 @@
+.window
+{
+	width: 771px;
+	height: 676px;
+	margin: 0 auto;
+}
+
+.frame
+{
+	background-image: url("file:///Users/Jien/Desktop/School/UR/Fall%202016/CSC%20210/Weather%20Window/winter.jpg");
+	z-index: 1;
+}
+
+img[id="snow"]
+{
+	position: absolute;
+	max-height: 100%;
+	max-width: 100%;
+	top: 0;
+	z-index: 2;
+}
