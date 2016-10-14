@@ -1,21 +1,42 @@
+html
+{
+	background-image: url("(The brick wall image I uploaded)");
+}
+
+#welcome
+{
+	text-align: center;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	margin-bottom: -1rem;
+	background-color: rgba(166, 162, 168, 0.7);
+}
+
+h1
+{
+	font-size: 2.5rem;
+}
+
 .window
 {
 	width: 771px;
 	height: 676px;
 	margin: 0 auto;
+	position: relative;
+	top: 2rem;
 }
 
 .frame
 {
-	background-image: url("file:///Users/Jien/Desktop/School/UR/Fall%202016/CSC%20210/Weather%20Window/winter.jpg");
+	background-color: grey;
 	z-index: 1;
 }
 
-img[id="snow"]
+.snow
 {
 	position: absolute;
 	max-height: 100%;
 	max-width: 100%;
 	top: 0;
 	z-index: 2;
+	animation-iteration-count: infinite;
 }
