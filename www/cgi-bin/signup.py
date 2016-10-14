@@ -74,7 +74,7 @@ else:
         print ('<h1>User account', username, 'already exists. Please return to login page </h1>')
     else:
         insert_new_user(username, password)
-        print ("Location: login.html\n\n") #redirect to sign-up page
+        print ("Location: Window.html\n\n") #redirect to welcome page
 
 
 
