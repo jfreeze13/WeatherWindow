@@ -34,19 +34,15 @@ def insert_new_user(username,password):
     conn.commit()
     conn.close()
 
-def user_check(): #Will include param for if new user or login access
+def check_exists (username):
+    conn = sqlite3.connect('weatherwindow.db')
+    cursor = conn.cursor()
 
-
-    conn1 = sqlite3.connect('weatherwindow.db')
-    cursor = conn1.cursor()
-    #for row in cursor.execute('SELECT * FROM users'):
-     #   print (row)
-
-    conn1.commit()
-    conn1.close()
-
-
-user_check()
+    result = cursor.execute("SELECT * FROM users WHERE username=?", [username])
+    if result.arraysize == 1:
+        return True
+    else:
+        return False
 
 login_form = cgi.FieldStorage()
 print("Content-Type: text/html\n\n")
@@ -54,16 +50,23 @@ print ()
 
 print ('''<html>
     <head>
-        <title>Login Results</title>
+        <title>Sign-Up Results</title>
     </head>
-        <body>
-            Hello World! I am Jess''')
-if "usernamefield" not in login_form:
-    print ('<h1>We gotta problem kids </h1>')
-username = login_form.getvalue('usernamefield')
-password = login_form.getvalue('passwordfield')
+        <body>''')
+if False:
+    print ('<h1>Please insert a Username and Password </h1>')
+    #figure out how to bring back to login page
+else:
+    username = login_form.getvalue('usernamefield')
+    password = login_form.getvalue('passwordfield')
 
-insert_new_user(username, password)
+    if check_exists(username):
+        print ('<h1>User account already exists. Please return to login page </h1>')
+    else:
+        insert_new_user(username, password)
+        print ("Location: login.html\n\n")
+
+
 
 print ('''
         </body>

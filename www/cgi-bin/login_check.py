@@ -11,26 +11,25 @@ def authenticate(username,password):
     conn = sqlite3.connect('weatherwindow.db')
     cursor = conn.cursor()
 
-    result = cursor.execute("SELECT * FROM users")# WHERE username=?", [username])
-    return result
-    #if result.arraysize == 1:
+    result = cursor.execute("SELECT * FROM users WHERE username=?", [username])
+    if result.arraysize == 1:
 
-     #   row = result.next()
-      #  encrypt_pw = row[1]
-       # salt = row[2]
+        row = result.next()
+        encrypt_pw = row[1]
+        salt = row[2]
 
-        #hashing = hashlib.md5()
-        #hashing.update(password)
-        #hashing.update(salt)
+        hashing = hashlib.md5()
+        hashing.update(password)
+        hashing.update(salt)
 
-        #digest = hashing.hexidigest()
+        digest = hashing.hexidigest()
 
+        conn.close()
 
+        return digest == encrypt_pw
+    else:
 
-        #return digest == encrypt_pw
-    #else:
-    conn.close()
-       # return False
+        return False
 
 
 
@@ -52,9 +51,9 @@ if "usernamefield" not in login_form:
 username = login_form.getvalue('usernamefield')
 password = login_form.getvalue('passwordfield')
 
-result = authenticate(username,password)
+pizza = authenticate(username,password)
 
-if result:
+if pizza:
     print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
 else:
     print ('<h1>Authentication Failed! </h1>')
