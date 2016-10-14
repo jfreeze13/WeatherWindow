@@ -1,36 +1,57 @@
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
+#Author: Jessica Freeze
+#CS code sourced highly from Professor Robert St. Jacque
+#CSC210 Lecture 10 github repository
 
-
+#Import stuff
+#sqlite3 used for ease of versioning over Mysql
 import cgitb
 import cgi
 import hashlib
 import sqlite3
 cgitb.enable()
 
+#authenticate that this user's password and username match what is present in the database
 def authenticate(username,password):
     conn = sqlite3.connect('weatherwindow.db')
+    #conn.row_factory = lambda cursor, row: row[0]
     cursor = conn.cursor()
-
-    result = cursor.execute("SELECT * FROM users")# WHERE username=?", [username])
-    return result
-    #if result.arraysize == 1:
-
-     #   row = result.next()
-      #  encrypt_pw = row[1]
-       # salt = row[2]
-
-        #hashing = hashlib.md5()
-        #hashing.update(password)
-        #hashing.update(salt)
-
-        #digest = hashing.hexidigest()
+    cursor.execute("SELECT username FROM users WHERE username=?", [username])
+    user = cursor.fetchall()
+    if user ==[]:
+        return 1
+    #pull from database the row with username matching what the user typed in.
+    result = cursor.execute("SELECT password FROM users WHERE username=?", [username])
+    pw=str(cursor.fetchone()[0])
 
 
+    cursor.execute("SELECT salt FROM users WHERE username=?", [username])
+    salt = str(cursor.fetchone()[0])
 
-        #return digest == encrypt_pw
-    #else:
-    conn.close()
-       # return False
+
+    if result.arraysize == 1:
+
+        hashing = hashlib.md5()
+        #password = str(password)
+
+        password = password.encode('utf-8')
+        salt = salt.encode('utf-8')
+
+        hashing.update(password)
+        hashing.update(salt)
+
+
+
+        digest = hashing.hexdigest()
+        conn.close()
+
+        if digest==pw:
+            return 2
+        else:
+            return 3
+    else:
+
+        return False
 
 
 
@@ -47,17 +68,30 @@ print ('''<html>
     </head>
     <body>''')
 
-if "usernamefield" not in login_form:
-    print ('<h1>We gotta problem kids </h1>')
-username = login_form.getvalue('usernamefield')
-password = login_form.getvalue('passwordfield')
-
-result = authenticate(username,password)
-
-if result:
-    print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
+if "usernamefield" and "passwordfield" not in login_form:
+    print ('<h1>Please return to the login page and provide a username and password </h1>')
+elif "usernamefield"  not in login_form:
+    print ('<h1>Please return to the login page and provide a username</h1>')
+elif "passwordfield" not in login_form:
+    print ('<h1>Please return to the login page and provide a password </h1>')
 else:
-    print ('<h1>Authentication Failed! </h1>')
+    username = login_form.getvalue('usernamefield')
+    password = login_form.getvalue('passwordfield')
+
+    pizza = authenticate(username,password)
+
+
+    print('<h1> output', pizza,' </h1>')
+
+    if pizza==2:
+        print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
+        #redirect to welcome page
+    elif pizza == 3:
+        print ('<h1>Authentication Failed for username', username, '! </h1>')
+    elif pizza ==1:
+        print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
+    else:
+        print ('<h1>What happened?! </h1>')
 
 
 print ('''
