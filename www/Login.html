@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!--ADDED-->
+		<!--load jQuery-->
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<!--include JS-->
+		<script type="text/javascript" src="LoginForm.js"></script>
+		<!--END ADDED-->
+
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
-		
+
 		<title>Login</title>
 		<h1 id="Welcome-header">
 			Welcome to Weather Window!
@@ -16,8 +23,14 @@
 			Password: <input type="password" required="required" name="passwordfield"><br><br>
 			<input type="submit" name="submit">
 		</form>
-		
+
 		Don't have an account?
 		<a href="Signup.html">Sign up here.</a>
+
+		<!--ADDED: show which user is logged in-->
+		<h2>User Logged In: </h2><p/>
+    <div id="local_contents"></div><p/>
+    <button type="button" id="logout_button">Logout!</button>
+		<!--END ADDED-->
 		</body>
 </html>
