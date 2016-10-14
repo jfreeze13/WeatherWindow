@@ -16,8 +16,10 @@ cgitb.enable()
 def insert_new_user(username,password):
     salt = str(datetime.datetime.now())
 
-    password = password.encode('utf-8')
-    salt = salt.encode('utf-8')
+    password = password.encode('utf8')
+    salt = salt.encode('utf8')
+
+
     hashing = hashlib.md5()
     hashing.update(password)
     hashing.update(salt)
@@ -28,7 +30,7 @@ def insert_new_user(username,password):
 
     #Need to include here an error message if user already exists and double check
     #prepared statement
-
+    salt = salt.decode('utf8')
     cursor.execute("INSERT INTO users VALUES(?,?,?);", [username,encrypt_pw,salt])
 
     conn.commit()
@@ -38,11 +40,14 @@ def check_exists (username):
     conn = sqlite3.connect('weatherwindow.db')
     cursor = conn.cursor()
 
-    result = cursor.execute("SELECT * FROM users WHERE username=?", [username])
-    if result.arraysize == 1:
+    result = cursor.execute("SELECT password FROM users WHERE username=?", [username])
+    pw = cursor.fetchall()
+    #return pw
+    if pw != []:
         return True
     else:
         return False
+
 
 login_form = cgi.FieldStorage()
 print("Content-Type: text/html\n\n")
@@ -53,6 +58,10 @@ print ('''<html>
         <title>Sign-Up Results</title>
     </head>
         <body>''')
+
+
+
+
 if False:
     print ('<h1>Please insert a Username and Password </h1>')
     #figure out how to bring back to login page
@@ -60,8 +69,10 @@ else:
     username = login_form.getvalue('usernamefield')
     password = login_form.getvalue('passwordfield')
 
+    #pizza = check_exists(username)
+    #print('<h1> output', pizza,' </h1>')
     if check_exists(username):
-        print ('<h1>User account already exists. Please return to login page </h1>')
+        print ('<h1>User account', username, 'already exists. Please return to login page </h1>')
     else:
         insert_new_user(username, password)
         print ("Location: login.html\n\n")
