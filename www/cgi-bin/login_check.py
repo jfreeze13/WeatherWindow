@@ -16,7 +16,10 @@ def authenticate(username,password):
     conn = sqlite3.connect('weatherwindow.db')
     #conn.row_factory = lambda cursor, row: row[0]
     cursor = conn.cursor()
-
+    cursor.execute("SELECT username FROM users WHERE username=?", [username])
+    user = cursor.fetchall()
+    if user ==[]:
+        return 1
     #pull from database the row with username matching what the user typed in.
     result = cursor.execute("SELECT password FROM users WHERE username=?", [username])
     pw=str(cursor.fetchone()[0])
@@ -42,7 +45,10 @@ def authenticate(username,password):
         digest = hashing.hexdigest()
         conn.close()
 
-        return digest==pw
+        if digest==pw:
+            return 2
+        else:
+            return 3
     else:
 
         return False
@@ -75,12 +81,17 @@ else:
     pizza = authenticate(username,password)
 
 
-#print('<h1> output', pizza,' </h1>')
+    print('<h1> output', pizza,' </h1>')
 
-    if pizza:
+    if pizza==2:
         print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
-    else:
+        #redirect to welcome page
+    elif pizza == 3:
         print ('<h1>Authentication Failed for username', username, '! </h1>')
+    elif pizza ==1:
+        print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
+    else:
+        print ('<h1>What happened?! </h1>')
 
 
 print ('''

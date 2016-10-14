@@ -1,6 +1,5 @@
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
-
-
+#Author: Jessica Freeze
 #Code very closely sourced to Robert St Jacque
 #CSC210 Lecture 10 github repository
 
@@ -75,7 +74,7 @@ else:
         print ('<h1>User account', username, 'already exists. Please return to login page </h1>')
     else:
         insert_new_user(username, password)
-        print ("Location: login.html\n\n")
+        print ("Location: login.html\n\n") #redirect to sign-up page
 
 
 
