@@ -86,6 +86,8 @@ else:
     if pizza==2:
         print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
         #redirect to welcome page
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n'
+        print
     elif pizza == 3:
         print ('<h1>Authentication Failed for username', username, '! </h1>')
     elif pizza ==1:
