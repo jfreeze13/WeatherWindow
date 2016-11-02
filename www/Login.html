@@ -33,6 +33,14 @@
 			}
 		}
 
+		//checks if user is logged in; if already logged in, redirects to MainScreen
+		var checkCookie = function() {
+		    var user=getCookie("username");
+		    if (user != "") {
+						window.location = "/MainScreen.html\r\n";
+		    }
+		}
+
 		//COOKIE FUNCTIONS (ends)
 
 		</script>
@@ -44,7 +52,7 @@
 		</h1>
 	</head>
 	<br><br>
-	<body>
+	<body onload="checkCookie()">
 		<h2>LOGIN</h2>
 		<form id="login" method="post" onsubmit="return setInitialCookie()" action="/cgi-bin/login_check.py" >
 			Username: <input type="text" required="required" name="usernamefield" id="usernamefield"><br><br>
