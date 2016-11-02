@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		//COOKIE FUNCTIONS (begins)
+		//setCookie and getCookie functions from w3schools
+		function setCookie(cname,cvalue,exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		    var expires = "expires=" + d.toGMTString();
+		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i = 0; i < ca.length; i++) {
+		        var c = ca[i];
+		        while (c.charAt(0) == ' ') {
+		            c = c.substring(1);
+		        }
+		        if (c.indexOf(name) == 0) {
+		            return c.substring(name.length, c.length);
+		        }
+		    }
+		    return "";
+		}
+
+		var setInitialCookie = function() {
+			var user = document.getElementById("usernamefield").value;
+			if (user != "" && user != null) {
+					setCookie("username", user, 30);
+			}
+		}
+
+		//COOKIE FUNCTIONS (ends)
+
+		</script>
+		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
+
+		<title>Login</title>
+		<h1 id="Welcome-header">
+			Welcome to Weather Window!
+		</h1>
+	</head>
+	<br><br>
+	<body>
+		<h2>LOGIN</h2>
+		<form id="login" method="post" onsubmit="return setInitialCookie()" action="/cgi-bin/login_check.py" >
+			Username: <input type="text" required="required" name="usernamefield" id="usernamefield"><br><br>
+
+			Password: <input type="password" required="required" name="passwordfield" id="passwordfield"><br><br>
+
+			<input type="submit" name="submit">
+		</form>
+
+		Don't have an account?
+		<a href="Signup.html">Sign up here.</a>
+		</body>
+</html>
