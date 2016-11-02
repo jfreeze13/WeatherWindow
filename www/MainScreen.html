@@ -42,11 +42,7 @@
 			    if (user != "") {
 			        document.getElementById("cookieuser").innerHTML = ("Username: " + user);
 			    } else {
-			       user = prompt("Please enter your name:","");
-			       if (user != "" && user != null) {
-			           setCookie("username", user, 30);
-			       }
-			       document.getElementById("cookie").innerHTML = ("Cookie set: " + user);
+						window.location = "/Login.html\r\n";
 			    }
 			}
 			//END OF COOKIE JAVASCRIPT
@@ -54,7 +50,7 @@
 			//logoutfunction
 			function logOut(){
 				deleteCookie();
-				window.location="/logout.html\r\n"
+				window.location = "/Logout.html\r\n";
 			}
 
 
