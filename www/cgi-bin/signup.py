@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!"C:\Program Files (x86)\Ampps\python\python.exe"
+#/!usr/bin/env python
 #Author: Jessica Freeze
 #Code very closely sourced to Robert St Jacque
 #CSC210 Lecture 10 github repository
