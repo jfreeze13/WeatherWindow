@@ -90,10 +90,14 @@ else:
         print
     elif pizza == 3:
         print ('<h1>Authentication Failed for username', username, '! </h1>')
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
+        print
     elif pizza ==1:
         print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
     else:
         print ('<h1>What happened?! </h1>')
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
 
 
 print ('''

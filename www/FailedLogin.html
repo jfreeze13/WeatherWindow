@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+    //BEGINNING OF COOKIE JAVASCRIPT
+    //getCookie, deleteCookie functions (modified) from w3schools
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    function deleteCookie(){
+      var d = new Date();
+      d.setTime(d.getTime() + (-1*24*60*60*1000));
+      var expires = "expires=" + d.toGMTString();
+      document.cookie = "username=" + getCookie("username") + ";" + expires + ";path=/";
+      document.getElementById("cookieuser").innerHTML = ("Cookie deleted");
+    }
+    //END OF COOKIE JAVASCRIPT
+
+		//COOKIE FUNCTIONS (ends)
+
+		</script>
+		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
+
+		<title>Login</title>
+		<h1 id="Welcome-header">
+			Welcome to Weather Window!
+		</h1>
+	</head>
+	<br><br>
+	<body>
+	<body onload="deleteCookie()">
+		<h2>FAILED LOGIN</h2>
+	  <p>YOU FAILED TO LOGIN</p>
+    Have an account?
+    <a href=Login.html>Login Here</a>
+    Don't have an account?
+    <a href=Signup.html>Signup Here</a>
+	</body>
+</html>
