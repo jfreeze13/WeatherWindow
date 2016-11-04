@@ -1,5 +1,29 @@
 <html>
 	<head>
+
+		<script>
+			//getCookie functions from w3schools
+			function getCookie(cname) {
+					var name = cname + "=";
+					var ca = document.cookie.split(';');
+					for(var i = 0; i < ca.length; i++) {
+							var c = ca[i];
+							while (c.charAt(0) == ' ') {
+									c = c.substring(1);
+							}
+							if (c.indexOf(name) == 0) {
+									return c.substring(name.length, c.length);
+							}
+					}
+					return "";
+			}
+			var checkCookie = function() {
+					var user=getCookie("username");
+					if (user != "") {
+							window.location = "/MainScreen.html\r\n";
+					}
+			}
+		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
 
 		<title>Sign Up</title>
@@ -8,7 +32,7 @@
 		</h1>
 	</head>
 	<br><br>
-	<body>
+	<body onload="checkCookie()">
 		<h2>SIGN UP</h2>
 
 		<form id="login" method = "post" action="/cgi-bin/signup.py">
