@@ -5,15 +5,7 @@
 
 	  <script language="javascript" type="text/javascript">
 
-			//BEGINNING OF COOKIE JAVASCRIPT
-			//setCookie, getCookie, deleteCookie, checkCookie functions (modified) from w3schools
-			function setCookie(cname,cvalue,exdays) {
-			    var d = new Date();
-			    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-			    var expires = "expires=" + d.toGMTString();
-			    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-			}
-
+			//getCookie, checkCookie functions (modified) from w3schools
 			function getCookie(cname) {
 			    var name = cname + "=";
 			    var ca = document.cookie.split(';');
@@ -29,14 +21,6 @@
 			    return "";
 			}
 
-			function deleteCookie(){
-			  var d = new Date();
-			  d.setTime(d.getTime() + (-1*24*60*60*1000));
-			  var expires = "expires=" + d.toGMTString();
-			  document.cookie = "username=" + getCookie("username") + ";" + expires + ";path=/";
-			  document.getElementById("cookieuser").innerHTML = ("Cookie deleted");
-			}
-
 			var checkCookie = function() {
 			    var user=getCookie("username");
 			    if (user != "") {
@@ -45,7 +29,6 @@
 						window.location = "/Login.html\r\n";
 			    }
 			}
-			//END OF COOKIE JAVASCRIPT
 
 			//logoutfunction
 			function logOut(){
@@ -121,7 +104,9 @@
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
 			<h2 id="cookieuser">Username: </h2>
-			<button onclick="logOut()">Logout</button>
+			<form id="login" method="post" action="/cgi-bin/logout.py" >
+  			<input type="submit" name="Logout" value="Log Out">
+  		</form>
 	  </div>
 
 	</body>

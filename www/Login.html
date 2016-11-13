@@ -2,15 +2,7 @@
 <html>
 	<head>
 		<script>
-		//COOKIE FUNCTIONS (begins)
-		//setCookie and getCookie functions from w3schools
-		function setCookie(cname,cvalue,exdays) {
-		    var d = new Date();
-		    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-		    var expires = "expires=" + d.toGMTString();
-		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-		}
-
+		//getCookie function from w3schools
 		function getCookie(cname) {
 		    var name = cname + "=";
 		    var ca = document.cookie.split(';');
@@ -25,14 +17,6 @@
 		    }
 		    return "";
 		}
-
-		var setInitialCookie = function() {
-			var user = document.getElementById("usernamefield").value;
-			if (user != "" && user != null) {
-					setCookie("username", user, 30);
-			}
-		}
-
 		//checks if user is logged in; if already logged in, redirects to MainScreen
 		var checkCookie = function() {
 		    var user=getCookie("username");
@@ -40,9 +24,6 @@
 						window.location = "/MainScreen.html\r\n";
 		    }
 		}
-
-		//COOKIE FUNCTIONS (ends)
-
 		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
 
