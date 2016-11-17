@@ -4,6 +4,10 @@
 	  <link rel="stylesheet" type="text/css" href="MainScreenStyle.css">
 
 	  <script language="javascript" type="text/javascript">
+			
+			var season = 0;
+			var weather = 0;
+			var music = 0;
 
 			//getCookie, checkCookie functions (modified) from w3schools
 			function getCookie(cname) {
@@ -41,6 +45,7 @@
 	  		var SeasonImage;
 	  		if(SeasonKey == 0){
 	  			SeasonImage = "url(\"https://giant.gfycat.com/ComplicatedDearestCockerspaniel.gif\")";
+				
 	  		} else if (SeasonKey == 1) {
 	  			SeasonImage = "url(\"https://giant.gfycat.com/ExcellentMelodicDiscus.gif\")";
 	  		} else if (SeasonKey == 2) {
@@ -66,6 +71,8 @@
 
 
 	  	}
+
+		function presetbuttons(
     </script>
 
 	</head>
@@ -94,12 +101,16 @@
 		  </div>
 	  </div>
 
+
 	  <div id="PresetSettings">
-	  <button type="button">1</button>
+	  <input type="checkbox" name="set">Set Customization on Button Click<br>
+	  <button onclick=">1</button>
 	  <button type="button">2</button>
 	  <button type="button">3</button>
 	  <button type="button">4</button>
 	  </div>
+	  
+	  
 
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
