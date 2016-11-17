@@ -112,19 +112,19 @@ else:
     #print('<h1> output', pizza,' </h1>')
 
     if pizza==2:
-        print "Content-Type: text/html"
+        print ('Content-Type: text/html')
         #send cookie
         print c
         print
         print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
         #redirect to welcome page
-        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n'
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
         print
         print ('''
             </body>
         </html>''')
     elif pizza == 3:
-        print "Content-Type: text/html"
+        print ('Content-Type: text/html')
         print
         print ('<h1>Authentication Failed for username', username, '! </h1>')
         print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
@@ -133,18 +133,18 @@ else:
             </body>
         </html>''')
     elif pizza ==1:
-        print "Content-Type: text/html"
+        print ('Content-Type: text/html')
         print
         print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
-        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
         print ('''
             </body>
         </html>''')
     else:
-        print "Content-Type: text/html"
+        print ('Content-Type: text/html')
         print
         print ('<h1>What happened?! </h1>')
-        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
         print ('''
             </body>
         </html>''')
