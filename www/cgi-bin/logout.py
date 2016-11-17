@@ -36,7 +36,7 @@ print '''	<head>
 	</head>
 	<br><br>
 	<body>
-            <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/main.html\">
+            <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">
 		</body>
 </html> '''
 print
