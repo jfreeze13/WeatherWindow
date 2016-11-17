@@ -23,10 +23,10 @@ print
 print ('<html>')
 try:
     data = c['username'].value
-    print ('"cookie data: " +data+"<br>"')
+    print ('cookie data: ' , data , ' <br>')
 except KeyError:
-    print ('"The cookie was not set or has expired<br>"')
-print ('''	<head>
+    print ('The cookie was not set or has expired<br>')
+print ('''<head>
 		<title>Logout</title>
 		<h1 id="Logout-header">
 			You are logged out!
@@ -38,5 +38,5 @@ print ('''	<head>
 	<body>
             <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">
 		</body>
-</html> '''')
+</html> ''')
 print
