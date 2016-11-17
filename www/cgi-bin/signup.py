@@ -75,7 +75,7 @@ else:
         print ('<h1>User account', username, 'already exists. Please return to login page </h1>')
     else:
         insert_new_user(username, password)
-        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n'
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
         #print ("Location: login.html\n\n") #redirect to sign-up page
 
 
