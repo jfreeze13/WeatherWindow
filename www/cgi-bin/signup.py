@@ -57,6 +57,9 @@ print ()
 print ('''<html>
     <head>
         <title>Sign-Up Results</title>
+        <h1 id="Logout-header">
+			You're account has been created!
+		</h1>
     </head>
         <body>''')
 
