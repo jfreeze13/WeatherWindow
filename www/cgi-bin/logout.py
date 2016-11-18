@@ -10,24 +10,26 @@ import os
 import cgi
 login_form = cgi.FieldStorage()
 
-stored_cookie_string = os.environ.get('HTTP_COOKIE')
-c = Cookie.SimpleCookie(stored_cookie_string)
-print (c)
+#stored_cookie_string = os.environ.get('HTTP_COOKIE')
+#c = Cookie.SimpleCookie(stored_cookie_string)
 
-nc = Cookie.SimpleCookie()
-nc['username'] = c['username']
-nc['username']['path'] = '/'
-nc['username']['expires'] = -1 * 30 * 24 * 60 * 60
+#nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
+#nc['username'] = c['username']
+#nc['username']['path'] = '/weatherwindow'
+#nc['username']['expires'] = 'Thu, 01 Jan 1970 00:00:00 GMT'
+
 
 print ('Content-Type: text/html')
 #print (nc)
 print ()
 print ('<html>')
-try:
-    data = c['username'].value
-    print ('cookie data: ' , data , ' <br>')
-except KeyError:
-    print ('The cookie was not set or has expired<br>')
+#print (c)
+#print(nc)
+#try:
+ #   data = nc['username'].value
+  #  print ('cookie data: ' , data , ' <br>')
+#except KeyError:
+ #   print ('The cookie was not set or has expired<br>')
 print ('''<head>
 		<title>Logout</title>
 		<h1 id="Logout-header">
