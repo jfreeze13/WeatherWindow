@@ -63,19 +63,16 @@
 	  			WeatherImage = "url(\"http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif\")";
 	  		}
 	  		document.getElementById("OverlayImage").style.backgroundImage = WeatherImage;
-
-	  function loadSong(){
-    
-    var player=document.getElementById('player');
-    var sourceaudio=document.getElementById('player');
-    
-    sourceaudio.src='rain2hard.mp3';
-    
-   player.load(); //just start buffering (preload)
-   player.play(); //start playing
-}
-
 	  	}
+
+	  function loadSong(AudioFileName){
+		  var player=document.getElementById('player');
+			var sourceaudio=document.getElementById('player');
+		  sourceaudio.src=AudioFileName;
+		  player.load(); //just start buffering (preload)
+		  player.play(); //start playing
+		}
+
     </script>
 
 	</head>
@@ -105,15 +102,15 @@
 	  </div>
 
 	  <div id="PresetSettings">
-	  	<audio id="player" controls="controls">
+	  	<audio id="player" controls="controls" loop>
 	  		<source src="sourceaudio" type="audio/mpeg">
 	  		You do not support this. Try using Chrome, bro.
 	  	</audio>
 	  	<br>
-		  <button onclick='loadSong()'>Play A Song</button>
-		  <button type="button">2</button>
-		  <button type="button">3</button>
-		  <button type="button">4</button>
+		  <button onclick='loadSong(null)'>Off</button>
+		  <button onclick='loadSong("rain2hard.mp3")'>Hard Rain</button>
+		  <button onclick='loadSong("rain-and-birds.mp3")'>Rain With Birds</button>
+		  <button onclick='loadSong("Wind-Mark_DiAngelo-1940285615.mp3")'>Wind Blowing</button>
 	  </div>
 
 	  <div id="AccountFunctions">
