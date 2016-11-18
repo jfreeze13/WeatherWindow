@@ -24,7 +24,7 @@
 			var checkCookie = function() {
 			    var user=getCookie("username");
 			    if (user != "") {
-			        document.getElementById("cookieuser").innerHTML = ("Username: " + user);
+			        document.getElementById("cookieuser").innerHTML = (user);
 			    } else {
 						window.location = "/Login.html\r\n";
 			    }
@@ -95,15 +95,20 @@
 	  </div>
 
 	  <div id="PresetSettings">
-	  <button type="button">1</button>
-	  <button type="button">2</button>
-	  <button type="button">3</button>
-	  <button type="button">4</button>
+	  	<audio controls>
+	  		<source src="rain2hard.mp3" type="audio/mpeg">
+	  		You do not support this. Try using Chrome, bro.
+	  	</audio>
+	  	<br>
+		  <button type="button">1</button>
+		  <button type="button">2</button>
+		  <button type="button">3</button>
+		  <button type="button">4</button>
 	  </div>
 
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
-			<h2 id="cookieuser">Username: </h2>
+			<h2 id="cookieuser"></h2>
 			<form id="login" method="post" action="/cgi-bin/logout.py" >
   			<input type="submit" name="Logout" value="Log Out">
   		</form>
