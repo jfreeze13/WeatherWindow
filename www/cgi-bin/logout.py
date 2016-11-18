@@ -17,8 +17,7 @@ print (c)
 nc = Cookie.SimpleCookie()
 nc['username'] = c['username']
 nc['username']['path'] = '/'
-nc['username']['expires'] = -1 * 30 * 24 * 60 * 60
-
+nc['username']['expires'] = "Thu, 01 Jan 1970 00:00:01 GMT:"
 print ('Content-Type: text/html')
 print (nc)
 print ()

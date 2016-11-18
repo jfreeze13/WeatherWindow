@@ -64,6 +64,16 @@
 	  		}
 	  		document.getElementById("OverlayImage").style.backgroundImage = WeatherImage;
 
+	  function loadSong(){
+    
+    var player=document.getElementById('player');
+    var sourceaudio=document.getElementById('player');
+    
+    sourceaudio.src='rain2hard.mp3';
+    
+   player.load(); //just start buffering (preload)
+   player.play(); //start playing
+}
 
 	  	}
     </script>
@@ -95,12 +105,12 @@
 	  </div>
 
 	  <div id="PresetSettings">
-	  	<audio controls>
-	  		<source src="rain2hard.mp3" type="audio/mpeg">
+	  	<audio id="player" controls="controls">
+	  		<source src="sourceaudio" type="audio/mpeg">
 	  		You do not support this. Try using Chrome, bro.
 	  	</audio>
 	  	<br>
-		  <button type="button">1</button>
+		  <button onclick='loadSong()'>Play A Song</button>
 		  <button type="button">2</button>
 		  <button type="button">3</button>
 		  <button type="button">4</button>
