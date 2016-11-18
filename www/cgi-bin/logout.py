@@ -20,7 +20,7 @@ nc['username']['path'] = '/'
 nc['username']['expires'] = -1 * 30 * 24 * 60 * 60
 
 print ('Content-Type: text/html')
-print (nc)
+#print (nc)
 print ()
 print ('<html>')
 try:
@@ -38,7 +38,7 @@ print ('''<head>
 	</head>
 	<br><br>
 	<body>
-            <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">
+            <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">
 		</body>
 </html> ''')
 print ()
