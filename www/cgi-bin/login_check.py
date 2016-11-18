@@ -1,5 +1,6 @@
-#!/usr/bin/env python
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
+# #!/usr/bin/env python
+
 #Author: Jessica Freeze
 #CS code sourced highly from Professor Robert St. Jacque
 #CSC210 Lecture 10 github repository
@@ -7,6 +8,9 @@
 #Import stuff
 #sqlite3 used for ease of versioning over Mysql
 import cgitb
+import http.cookies as Cookie
+import os
+import cgi
 
 cgitb.enable()
 
@@ -55,10 +59,7 @@ def authenticate(username,password):
 
         return False
 
-import Cookie
-import os
 
-import cgi
 login_form = cgi.FieldStorage()
 
 if "usernamefield" and "passwordfield" not in login_form:
@@ -114,12 +115,12 @@ else:
     if pizza==2:
         print ('Content-Type: text/html')
         #send cookie
-        print c
-        print
+        print (c)
+        print ()
         print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
         #redirect to welcome page
         print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
-        print
+        print ()
         print ('''
             </body>
         </html>''')
@@ -127,14 +128,14 @@ else:
         print ('Content-Type: text/html')
         print
         print ('<h1>Authentication Failed for username', username, '! </h1>')
-        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n'
-        print
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
+        print ()
         print ('''
             </body>
         </html>''')
     elif pizza ==1:
         print ('Content-Type: text/html')
-        print
+        print ()
         print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
         print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
         print ('''
@@ -142,7 +143,7 @@ else:
         </html>''')
     else:
         print ('Content-Type: text/html')
-        print
+        print ()
         print ('<h1>What happened?! </h1>')
         print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
         print ('''

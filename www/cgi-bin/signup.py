@@ -1,5 +1,6 @@
-#!/usr/bin/env python
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
+#!/usr/bin/env python
+
 #Author: Jessica Freeze
 #Code very closely sourced to Robert St Jacque
 #CSC210 Lecture 10 github repository
@@ -31,7 +32,7 @@ def insert_new_user(username,password):
     #Need to include here an error message if user already exists and double check
     #prepared statement
     salt = salt.decode('utf8')
-    cursor.execute("INSERT INTO users VALUES(?,?,?);", [username,encrypt_pw,salt])
+    cursor.execute("INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", [username,encrypt_pw,salt,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 
     conn.commit()
     conn.close()
