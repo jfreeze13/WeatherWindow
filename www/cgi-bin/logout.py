@@ -1,9 +1,10 @@
+#!"C:\Program Files (x86)\Ampps\python\python.exe"
 #!/usr/bin/env python
 import cgitb
 
 cgitb.enable()
 
-import Cookie
+import http.cookies as Cookie
 import os
 
 import cgi
@@ -11,6 +12,7 @@ login_form = cgi.FieldStorage()
 
 stored_cookie_string = os.environ.get('HTTP_COOKIE')
 c = Cookie.SimpleCookie(stored_cookie_string)
+print (c)
 
 nc = Cookie.SimpleCookie()
 nc['username'] = c['username']
@@ -18,8 +20,8 @@ nc['username']['path'] = '/'
 nc['username']['expires'] = -1 * 30 * 24 * 60 * 60
 
 print ('Content-Type: text/html')
-print nc
-print
+print (nc)
+print ()
 print ('<html>')
 try:
     data = c['username'].value
@@ -39,4 +41,5 @@ print ('''<head>
             <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">
 		</body>
 </html> ''')
-print
+print ()
+
