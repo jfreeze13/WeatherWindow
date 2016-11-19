@@ -42,6 +42,6 @@ print ('''<head>
 	<body>
             <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">
 		</body>
-</html> ''')
+</html>''')
 print ()
 
