@@ -39,14 +39,14 @@
 
 			function changeSeason(SeasonKey) {
 	  		var SeasonImage;
-	  		if(SeasonKey == 0){
-	  			SeasonImage = "url(\"https://giant.gfycat.com/ComplicatedDearestCockerspaniel.gif\")";
-	  		} else if (SeasonKey == 1) {
-	  			SeasonImage = "url(\"https://giant.gfycat.com/ExcellentMelodicDiscus.gif\")";
-	  		} else if (SeasonKey == 2) {
-	  			SeasonImage = "url(\"http://i.imgur.com/eTylYZr.gif\")";
-	  		} else if (SeasonKey == 3) {
-	  			SeasonImage = "url(\"http://i.imgur.com/m6mUMQI.gif\")";
+	  		if(SeasonKey == 'flowing_grass.gif'){
+	  			SeasonImage = "url(\"flowing_grass.gif\")";
+	  		} else if (SeasonKey == 'running_water.gif') {
+	  			SeasonImage = "url(\"running_water.gif\")";
+	  		} else if (SeasonKey == 'foggy_mountain.gif') {
+	  			SeasonImage = "url(\"foggy_mountain.gif\")";
+	  		} else if (SeasonKey == 'cold_lake.gif') {
+	  			SeasonImage = "url(\"cold_lake.gif\")";
 	  		}
 	  		document.body.style.background = SeasonImage;
 	  	}
@@ -54,13 +54,13 @@
 	  	function changeWeather(WeatherKey) {
 	  		var WeatherImage;
 	  		if (WeatherKey == 0){
-	  			WeatherImage = "";
-	  		} else if (WeatherKey == 1){
-	  			WeatherImage = "url(\"https://67.media.tumblr.com/d01e3095937a89de0f0d1b13e3dc9cd6/tumblr_ml8w56PjL31qm1b5xo1_400.gif\")";
-	  		} else if (WeatherKey == 2) {
-	  			WeatherImage = "url(\"https://media.giphy.com/media/4M6xlFxZskH8A/giphy.gif\")";
-	  		} else if (WeatherKey == 3) {
-	  			WeatherImage = "url(\"http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif\")";
+	  			WeatherImage = "none";
+	  		} else if (WeatherKey == 'falling_rain.gif'){
+	  			WeatherImage = "url(\"falling_rain.gif\")";
+	  		} else if (WeatherKey == 'falling_snow.gif') {
+	  			WeatherImage = "url(\"falling_snow.gif\")";
+	  		} else if (WeatherKey == 'falling_leaves.gif') {
+	  			WeatherImage = "url(\"falling_leaves.gif\")";
 	  		}
 	  		document.getElementById("OverlayImage").style.backgroundImage = WeatherImage;
 	  	}
@@ -88,23 +88,23 @@
 
 	  <div id="WeatherControl">
 		  <div>
-			  <button onclick="changeSeason(0)">Spring</button>
-			  <button onclick="changeSeason(1)">Summer</button>
-			  <button onclick="changeSeason(2)">Autumn</button>
-			  <button onclick="changeSeason(3)">Winter</button>
+			  <button onclick="changeSeason('flowing_grass.gif')">Spring</button>
+			  <button onclick="changeSeason('running_water.gif')">Summer</button>
+			  <button onclick="changeSeason('foggy_mountain.gif')">Autumn</button>
+			  <button onclick="changeSeason('cold_lake.gif')">Winter</button>
 			 </div>
 		  <div>
 		    <button onclick="changeWeather(0)">None</button>
-		    <button onclick="changeWeather(1)">Rainy</button>
-		    <button onclick="changeWeather(2)">Snowy</button>
-		    <button onclick="changeWeather(3)">Leafy</button>
+		    <button onclick="changeWeather('falling_rain.gif')">Rainy</button>
+		    <button onclick="changeWeather('falling_snow.gif')">Snowy</button>
+		    <button onclick="changeWeather('falling_leaves.gif')">Leafy</button>
 		  </div>
 	  </div>
 
 	  <div id="PresetSettings">
 	  	<audio id="player" controls="controls" loop>
 	  		<source src="sourceaudio" type="audio/mpeg">
-	  		You do not support this. Try using Chrome, bro.
+	  		Your browser does not support this!
 	  	</audio>
 	  	<br>
 		  <button onclick='loadSong(null)'>Off</button>
