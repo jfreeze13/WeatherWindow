@@ -48,6 +48,7 @@
 	  			SeasonImage = "url(\"http://i.imgur.com/m6mUMQI.gif\")";
 	  		}
 	  		document.body.style.background = SeasonImage;
+				document.body.style.backgroundRepeat = "no-repeat";
 	  	}
 
 	  	function changeWeather(WeatherKey) {
@@ -65,6 +66,35 @@
 
 
 	  	}
+
+			var myVar = setInterval(checkDate, 1000);
+
+			function checkDate() {
+
+				var d = new Date();
+
+				var time = new Date();
+				var hour = time.getHours();
+
+				var timebg;
+				if (hour >= 6 && hour < 8) {
+					//sunrise background
+					timebg = "";
+				} else if (hour >= 8 && hour < 17) {
+					//day background
+					timebg = "";
+				} else if (hour >= 17 && hour <19) {
+					//sunset background
+					timebg = "";
+				} else {
+					//night background
+					timebg = "";
+				}
+
+    		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+
+			}
+
     </script>
 
 	</head>
@@ -76,6 +106,10 @@
 	  <div id="AudioControl">
 	  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/2000px-Speaker_Icon.svg.png" alt="Volume!" style="width:30px;height:30px">
 	  </div>
+
+		<div id="DayNight">
+			<div id="time"></time>
+		</div>
 
 
 	  <div id="WeatherControl">
