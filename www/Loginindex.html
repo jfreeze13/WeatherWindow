@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-	<meta charset="utf-8"/>
-		<script>
+
+
+        <!-- include JS -->
+        <script type="text/javascript" src="login_ajax.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js">
 		//getCookie function from w3schools
 		function getCookie(cname) {
 		    var name = cname + "=";
@@ -25,6 +28,38 @@
 						window.location = "/MainScreen.html\r\n";
 		    }
 		}
+
+		function doTheThing()
+		{
+			jQuery(document).ready(function){
+				jQuery(".button").click(function){
+					var username = $$("input#usernamefield").val();
+					var password = $$("input#passwordfield").val();
+					jQuery.ajax({
+						type: POST,
+						data: {usernamefield:username, passwordfield:password},
+						url: "/cgi-bin/login_check.py",
+						complete: function(data){
+							jQuery("#result").html(data)},
+						});
+						return false;
+				});
+			}
+		}
+
+		// function authh(){
+		// 	var auth = function(){
+		// 		var username = document.getElementById("usernamefield").value;
+		// 		var password = document.getElementById("passwordfield").value;
+		// 		$.ajax({
+		// 			method: "POST",
+		// 			url: "/login_check.py",
+		// 			dataType: "script"
+		// 		});
+		// 		console.log(data);
+		// 		document.getElementById("result").innerHTML = "nobody cares";
+		// 	}}
+
 		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
 
@@ -42,8 +77,8 @@
 
 			Password: <input type="password" required="required" name="passwordfield" id="passwordfield"><br><br>
 
-			<input class="button" type="submit" name="submit">
-			<p class="result"></p>
+			<input class="button" type="submit" name="submit" action="/cgi-bin/login_check.py" onclick="authh()">
+			<p class="result" id="result">asdas;dkfjlakl;sfjads;fk</p>
 		</form>
 
 		Don't have an account?

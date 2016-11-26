@@ -11,13 +11,16 @@ import cgitb
 import http.cookies as Cookie
 import os
 import cgi
+import hashlib
+import sqlite3
+
+
 
 cgitb.enable()
 
 #authenticate that this user's password and username match what is present in the database
 def authenticate(username,password):
-    import hashlib
-    import sqlite3
+
 
     conn = sqlite3.connect('weatherwindow.db')
     #conn.row_factory = lambda cursor, row: row[0]
@@ -113,39 +116,26 @@ else:
     #print('<h1> output', pizza,' </h1>')
 
     if pizza==2:
-        print ('Content-Type: text/html')
         #send cookie
         print (c)
+        print ("Status: 301 Moved")
+        print ("Location:/MainScreen.html")
         print ()
-        print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
-        #redirect to welcome page
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
-        print ()
-        print ('''
-            </body>
-        </html>''')
+
     elif pizza == 3:
-        print ('Content-Type: text/html')
-        print
-        print ('<h1>Authentication Failed for username', username, '! </h1>')
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
+        print ("Status: 301 Moved")
+        print ("Location:/FailedLogin.html")
         print ()
-        print ('''
-            </body>
-        </html>''')
     elif pizza ==1:
-        print ('Content-Type: text/html')
+        print ("Status: 301 Moved")
+        print ("Location:/FailedLogin.html")
         print ()
-        print ('<h1>No such username', username, 'exists. Please go to signup page. </h1>')
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
-        print ('''
-            </body>
-        </html>''')
     else:
-        print ('Content-Type: text/html')
+        print ("Status: 301 Moved")
+        print ("Location:/FailedLogin.html")
         print ()
-        print ('<h1>What happened?! </h1>')
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/FailedLogin.html\">\n')
-        print ('''
-            </body>
-        </html>''')
+
+
+
+
+

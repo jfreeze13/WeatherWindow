@@ -1,0 +1,4 @@
+print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
+        #redirect to welcome page
+        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
+        print ()
