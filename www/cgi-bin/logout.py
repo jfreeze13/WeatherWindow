@@ -6,7 +6,7 @@ cgitb.enable()
 
 import http.cookies as Cookie
 import os
-
+import json
 import cgi
 login_form = cgi.FieldStorage()
 
@@ -18,6 +18,7 @@ login_form = cgi.FieldStorage()
 #nc['username']['path'] = '/weatherwindow'
 #nc['username']['expires'] = 'Thu, 01 Jan 1970 00:00:00 GMT'
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 nc = Cookie.SimpleCookie()
 nc['username'] = c['username']
@@ -50,5 +51,9 @@ print ('''<head>
             <META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">
 		</body>
 </html>''')
+=======
+print ("Status: 301 Moved")
+print ("Location:/Login.html")
+>>>>>>> origin/master
 print ()
 
