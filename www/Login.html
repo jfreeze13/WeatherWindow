@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
+	<meta charset="utf-8"/>
 		<script>
 		//getCookie function from w3schools
 		function getCookie(cname) {
@@ -20,7 +21,7 @@
 		//checks if user is logged in; if already logged in, redirects to MainScreen
 		var checkCookie = function() {
 		    var user=getCookie("username");
-		    if (user != "") {
+		    if (user != "") { 	
 						window.location = "/MainScreen.html\r\n";
 		    }
 		}
