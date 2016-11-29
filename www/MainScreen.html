@@ -11,6 +11,8 @@
 	  	var SeasonCook=0;
 	  	var WeatherCook=0;
 	  	var user;
+	  	var wthrcook=0;
+	  	var ssncook=0;
 			//getCookie, checkCookie functions (modified) from w3schools
 			function getCookie(cname) {
 			    var name = cname + "=";
@@ -86,15 +88,42 @@
 
                	success: function(response) {   // function to execute upon a successful request
                		console.log("success for database!");
-               		//if(!(document.getElementById('saveorload').checked)){
+               		if(!(document.getElementById('saveorload').checked)){
                    		console.log("Fetching Cookies");
-                   		var ssncook = getCookie("ssn");
+                   		ssncook = getCookie("ssn");
                    		console.log(ssncook);
-                   		var wthrcook = getCookie("wthr");
+                   		wthrcook = getCookie("wthr");
                    		console.log(wthrcook);
-                   		document.body.style.backgroundImage = wthrcook;
+                   		var SeasonImg=0;
+	  					if(ssncook == "\"url('flowing_grass.gif')\""){
+	  						SeasonImg = "url('flowing_grass.gif')";
+	  						console.log("in grass")
+	  					} else if (ssncook == "\"url('running_water.gif')\"") {
+	  						console.log("in water")
+	  						SeasonImg = "url('running_water.gif')";
+	  					} else if (ssncook == "\"url('foggy_mountain.gif')\"") {
+	  						console.log("in fog")
+	  						SeasonImg = "url('foggy_mountain.gif')";
+	  					} else if (ssncook == "\"url('cold_lake.gif')\"") {
+	  						console.log("in cold")
+	  						SeasonImg = "url('cold_lake.gif')";
+	  					}else{
+	  						console.log("in else")
+	  					}
+	  					document.body.style.backgroundImage = SeasonImg;
 
-                   		                   //}
+	  					var WeatherImg=0;
+	  					if (wthrcook == 'none'){
+	  						WeatherImg = "none";
+	  					} else if (wthrcook == "\"url('falling_rain.gif')\""){
+	  						WeatherImg = "url(\"falling_rain.gif\")";
+	  					} else if (wthrcook == "\"url('falling_snow.gif')\"") {
+	  						WeatherImg = "url(\"falling_snow.gif\")";
+	  					} else if (wthrcook == "\"url('falling_leaves.gif')\"") {
+	  						WeatherImg = "url(\"falling_leaves.gif\")";
+	  					}
+	  					document.getElementById("OverlayImage").style.backgroundImage =WeatherImg;
+                   	}
                	},
 
                	error: function(request) {   // function to call when the request fails
@@ -104,7 +133,9 @@
                    
                	}
            	});
-
+			//wthrcook = getCookie("wthr");
+            //console.log(wthrcook);
+            //document.body.style.backgroundImage = "url(\'cold_lake.gif\')";;
 		}
 		function changeSeason(SeasonKey) {
 	  		var SeasonImage=0;
@@ -119,7 +150,7 @@
 	  			SeasonCook='url(\'foggy_mountain.gif\')';
 	  		} else if (SeasonKey == 'cold_lake.gif') {
 	  			SeasonImage = "url(\'cold_lake.gif\')";
-	  			SeasonCook='url(\'cold_lake.gif\')';
+	  			SeasonCook="url(\'cold_lake.gif\')";
 	  		}
 	  		document.body.style.backgroundImage = SeasonImage;
 

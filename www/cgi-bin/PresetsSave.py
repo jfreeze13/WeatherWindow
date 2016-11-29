@@ -73,6 +73,12 @@ else:
         c['ssn']=userback
         c['wthr']['Path'] = '/'
         c['wthr'] = user
+        c['username']['Path'] = '/'
+        c['username'] = username
+        c['presNum']['Path'] = '/'
+        c['presNum'] = presetNum
+        c['chk']['Path'] = '/'
+        c['chk'] = chck
         print(c)
         print()
     elif presetNum == '2':
@@ -82,9 +88,15 @@ else:
         userback = str(cursor.fetchone()[0])
         c2 = Cookie.SimpleCookie(os.environ['HTTP_COOKIE'])
         c2['ssn']['Path'] = '/'
-        c2['ssn'] = userback
+        c2['ssn'] =userback
         c2['wthr']['Path'] = '/'
-        c2['wthr'] = user
+        c2['wthr'] =user
+        c2['username']['Path'] = '/'
+        c2['username'] = username
+        c2['presNum']['Path'] = '/'
+        c2['presNum'] = presetNum
+        c2['chk']['Path'] = '/'
+        c2['chk'] = chck
         print(c2)
         print()
     elif presetNum == '3':
@@ -94,9 +106,15 @@ else:
         userback = str(cursor.fetchone()[0])
         c3 = Cookie.SimpleCookie(os.environ['HTTP_COOKIE'])
         c3['ssn']['Path'] = '/'
-        c3['ssn'] = userback
+        c3['ssn'] =userback
         c3['wthr']['Path'] = '/'
-        c3['wthr'] = user
+        c3['wthr'] =user
+        c3['username']['Path'] = '/'
+        c3['username'] = username
+        c3['presNum']['Path'] = '/'
+        c3['presNum'] = presetNum
+        c3['chk']['Path'] = '/'
+        c3['chk'] = chck
         print(c3)
         print()
     elif presetNum == '4':
@@ -109,6 +127,12 @@ else:
         c4['ssn'] = userback
         c4['wthr']['Path'] = '/'
         c4['wthr'] = user
+        c4['username']['Path'] = '/'
+        c4['username'] = username
+        c4['presNum']['Path'] = '/'
+        c4['presNum'] = presetNum
+        c4['chk']['Path'] = '/'
+        c4['chk'] = chck
         print(c4)
         print()
     else:
