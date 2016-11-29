@@ -23,7 +23,6 @@ def authenticate(username,password):
 
 
     conn = sqlite3.connect('weatherwindow.db')
-    #conn.row_factory = lambda cursor, row: row[0]
     cursor = conn.cursor()
     cursor.execute("SELECT username FROM users WHERE username=?", [username])
     user = cursor.fetchall()

@@ -1,25 +1,37 @@
 html
 {
 	text-align: center;
-	background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");
+	/*background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");*/
 	background-color: #7abdc9;
-	background-size: cover;
+	height:100%;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 body
 {
-	background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");
 	background-color: #7abdc9;
-	background-size: 100%;
+	background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");
+	height: 100%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	background-size: cover;
+	background-repeat: no-repeat;
 
 }
 #OverlayImage
 {
+
 	height: 100%;
-	width: 100%;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 	background-size: cover;
+	background-repeat: no-repeat;
 }
+
 
 #AudioControl
 {
@@ -47,6 +59,20 @@ body
 	position: fixed;
 	left: 30px;
 	bottom: 30px;
+	border-style: solid;
+	border-width: 2px;
+	background-color: black;
+	opacity: 0.5;
+	border-radius: 4%;
+	padding: 3px;
+
+}
+
+#SoundSettings
+{
+	position: fixed;
+	left: 30px;
+	bottom: 60px;
 	border-style: solid;
 	border-width: 2px;
 	background-color: black;

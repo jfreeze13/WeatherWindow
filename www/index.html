@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <!-- load jQuery -->
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- include JS -->
+        <script type="text/javascript" src="lecture08.js"></script>
+
+        <style type="text/css">
+            #error {
+                color: red
+            }
+        </style>
+
+        <title>Lecture 08 Ajax Demo</title>
+    </head>
+    <body>
+
+        <h1>Pizza Order Tracker!</h1>
+
+        <p>Please enter a name to find any outstanding orders for that customer.</p>
+
+        Name: <input id="customer_name" type="text"/>
+        <button type="button" id="fetch_pizza">Get Pizza Orders!</button>
+        <p/>
+
+        <div class="order_data" id="name"></div>
+        <div class="order_data" id="size"></div>
+        <div class="order_data" id="crust"></div>
+        <div class="order_data" id="toppings"></div>
+        <div class="order_data" id="phone"></div>
+        <div class="order_data" id="credit"></div>
+        <div id="error"></div>
+    </body>
+</html>

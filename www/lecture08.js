@@ -60,7 +60,6 @@ var get_status = function() {
 
         error: function(request) {   // function to call when the request fails
             console.log("error!");
-            console.log(data);
             console.log(request);
             $('.order_data').empty();
             $('#error').html("<p>There has been an error fetching the order for " + $name +

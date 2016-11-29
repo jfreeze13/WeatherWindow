@@ -1,4 +1,26 @@
-print ('<h1>User ' , username , ' has been successfully authenticated!</h1>')
-        #redirect to welcome page
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
-        print ()
+nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
+username = nc['username'].value
+presetNum=nc['presNum'].value
+ssn = nc['ssn'].value
+wthr = nc['wthr'].value
+#print ("Status: 301 Moved")
+#print ("Location:/MainScreen.html")
+print ()
+conn = sqlite3.connect('weatherwindow.db')
+cursor = conn.cursor()
+#cursor.execute("UPDATE users SET ")
+cursor.execute("SELECT * FROM users WHERE username=?", [username])
+user =str(cursor.fetchone()[0])
+print(presetNum)
+print(ssn)
+print(wthr)
+print(user)
+print()
+
+c = Cookie.SimpleCookie(os.environ['HTTP_COOKIE'])
+        c['ssn']['Path']='/'
+        c['ssn']='userback'
+        c['wthr']['Path'] = '/'
+        c['wthr'] = 'user'
+        print(c)
+        print()

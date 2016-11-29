@@ -26,6 +26,68 @@
 		    }
 		}
 		</script>
+
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <!-- include JS -->
+       <script language="javascript" type="text/javascript">
+            $(document).ready(function() {
+                console.log("Lecture 08 script loaded...");
+
+           // when the button with the id 'fetch_pizza' is clocked...
+                $('#submit').click(get_status);
+                $('#usernamefield').keypress(function(event) {
+                       
+                });
+            });
+
+
+
+       		var get_status = function() {
+           // get the value typed into the input field with the id 'customer_name'
+           		var $name = $('#usernamefield').val();
+           		console.log("name: " + $name);
+           // $("#message").load("test.txt");
+           		console.log('HIII');
+
+
+           // .ajax is the core Ajax function supported by jQuery and requires the following parameters:
+           //  url: the URL of the resource to send the request to
+           //  data: the data to send along with the request; encoded as a query string for GET
+           //  dataType: the expected format of the data coming back in the response
+           //  success: a function to execute if the request is successful
+           //  error: a function to execute if the request fails for any reason
+           		$.ajax({
+               		url: '../cgi-bin/login_check.py',  // lecture 8 script to query the pizza database
+
+               		data: {                       // the data to send
+                   		usernamefield: $name
+               		},
+
+               		type: "POST",                  // GET or POST
+
+               		dataType: "html",             // json format
+
+               		success: function(response) {   // function to execute upon a successful request
+                   		console.log("success!");
+
+                   		$('#usernamefield').html('Name: ' + data.usernamefield);
+                   		$('#passwordfield').html('Size: ' + data.passwordfield);
+                   
+               		},
+
+               		error: function(request) {   // function to call when the request fails
+                   		console.log("error!");
+                   		//console.log(data);
+                   		console.log(request);
+                   		$('#error').html("<p>Potatoes " + $name +
+                       		", are you sure that this person has an outstanding order?</p>");
+               		}
+           		});
+       		};
+
+        </script>
+
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
 
 		<title>Login</title>
@@ -37,13 +99,13 @@
 	<body>
 	<body onload="checkCookie()">
 		<h2>LOGIN</h2>
-		<form id="login" method="post" onsubmit="return setInitialCookie()" action="/cgi-bin/login_check.py" >
+		<form id="login" method="post" action="/cgi-bin/login_check.py">
 			Username: <input type="text" required="required" name="usernamefield" id="usernamefield"><br><br>
 
 			Password: <input type="password" required="required" name="passwordfield" id="passwordfield"><br><br>
 
-			<input class="button" type="submit" name="submit">
-			<p class="result"></p>
+			<input class="button" id="submit" type="submit" name="submit">
+			<div id="error"></div>
 		</form>
 
 		Don't have an account?
