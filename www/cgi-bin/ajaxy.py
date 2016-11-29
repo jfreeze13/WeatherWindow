@@ -1,5 +1,4 @@
-#!"C:\Program Files (x86)\Ampps\python\python.exe"
-# #!/usr/bin/env python
+#!/usr/bin/env python
 
 import cgi
 import json
@@ -7,7 +6,7 @@ import json
 login_form = cgi.FieldStorage()
 username = login_form.getvalue('usernamefield')
 password = login_form.getvalue('passwordfield')
-print ('Content-type: application/json')
-print ()
+print 'Content-type: application/json'
+print 
 response={'username':username}
-print(json.JSONEncoder().encode(response))
+print json.JSONEncoder().encode(response)

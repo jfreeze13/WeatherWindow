@@ -1,5 +1,4 @@
-#!"C:\Program Files (x86)\Ampps\python\python.exe"
-# #!/usr/bin/env python
+#!/usr/bin/env python
 
 #Author: Jessica Freeze
 
@@ -18,33 +17,33 @@ presetNum = nc['presNum'].value
 
 #print ("Status: 301 Moved")
 #print ("Location:/MainScreen.html")
-print ()
+print 
 conn = sqlite3.connect('weatherwindow.db')
 cursor = conn.cursor()
-print(presetNum)
+print presetNum
 if presetNum == '1':
-    print(presetNum)
+    print presetNum
     cursor.execute("SELECT over1 FROM users WHERE username=?", [username])
     user = str(cursor.fetchone()[0])
 elif presetNum == '2':
-    print(presetNum)
+    print presetNum
     cursor.execute("UPDATE users SET back2=?, over2=? WHERE username=?", (ssn, wthr, username))
-    print(presetNum)
+    print presetNum
 elif presetNum == '3':
-    print(presetNum)
+    print presetNum
     cursor.execute("UPDATE users SET back3=?, over3=? WHERE username=?", (ssn, wthr, username))
-    print(presetNum)
+    print presetNum
 elif presetNum == '4':
-    print(presetNum)
+    print presetNum
     cursor.execute("UPDATE users SET back4=?, over4=? WHERE username=?", (ssn, wthr, username))
-    print(presetNum)
+    print presetNum
 else:
-    print("problem in update")
+    print "problem in update"
 
 
-print(user)
-print(presetNum)
-print()
+print user
+print presetNum
+print
 
 conn.commit()
 conn.close()
