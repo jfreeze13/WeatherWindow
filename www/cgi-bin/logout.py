@@ -3,7 +3,7 @@ import cgitb
 
 cgitb.enable()
 
-import http.cookies as Cookie
+import Cookie
 import os
 import json
 import cgi
