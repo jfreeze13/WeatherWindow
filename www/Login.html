@@ -66,13 +66,12 @@
 
                		type: "POST",                  // GET or POST
 
-               		dataType: "html",             // json format
+               		dataType: "text",             // json format
 
-               		success: function(response) {   // function to execute upon a successful request
+               		success: function(data) {   // function to execute upon a successful request
                    		console.log("success!");
 
                    		$('#usernamefield').html('Name: ' + data.usernamefield);
-                   		$('#passwordfield').html('Size: ' + data.passwordfield);
                    
                		},
 

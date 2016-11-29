@@ -56,6 +56,7 @@
 
 		function presets(option){
 			console.log(WeatherCook);
+			console.log(SeasonCook);
 			if(document.getElementById('saveorload').checked){
 				console.log("checked");
 				document.cookie ="chk=checked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
@@ -65,6 +66,9 @@
 			}else{
 				console.log("unchecked");
 				document.cookie ="chk=unchecked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+				document.cookie ="presNum="+option+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+				document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+				document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
 			}
 			
 				
@@ -81,8 +85,16 @@
                	dataType: "text",             // html format
 
                	success: function(response) {   // function to execute upon a successful request
-                   	console.log("success for database!");
-                   
+               		console.log("success for database!");
+               		//if(!(document.getElementById('saveorload').checked)){
+                   		console.log("Fetching Cookies");
+                   		var ssncook = getCookie("ssn");
+                   		console.log(ssncook);
+                   		var wthrcook = getCookie("wthr");
+                   		console.log(wthrcook);
+                   		document.body.style.backgroundImage = wthrcook;
+
+                   		                   //}
                	},
 
                	error: function(request) {   // function to call when the request fails
@@ -126,7 +138,7 @@
 	  			WeatherCook='url(\'falling_snow.gif\')';
 	  		} else if (WeatherKey == 'falling_leaves.gif') {
 	  			WeatherImage = "url(\"falling_leaves.gif\")";
-	  			WeatherCook='url(\'falling_leaves.gif\')';
+	  			WeatherCook="url(\'falling_leaves.gif\')";
 	  		}
 	  		document.getElementById("OverlayImage").style.backgroundImage =WeatherImage;
 	  	}
@@ -174,7 +186,7 @@
 	  
 	  <form id="PresetSettings" method="post">
 	  	  <input type = "checkbox" class="presetbox" id="saveorload">
-		  <button onclick='presets(1);return false;'>1</button>
+		  <button onclick='presets(1); return false;'>1</button>
 		  <button onclick='presets(2); return false;' >2</button>
 		  <button onclick='presets(3); return false;'>3</button>
 		  <button onclick='presets(4); return false;'>4</button>
