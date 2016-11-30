@@ -13,6 +13,7 @@
 	  	var user;
 	  	var wthrcook=0;
 	  	var ssncook=0;
+
 			//getCookie, checkCookie functions (modified) from w3schools
 			function getCookie(cname) {
 			    var name = cname + "=";
@@ -72,8 +73,7 @@
 				document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
 				document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
 			}
-			
-				
+
 			$.ajax({
                	url: '../cgi-bin/PresetsSave.py',  // lecture 8 script to query the pizza database
 
@@ -130,7 +130,7 @@
                    	console.log("error for database!");
                    		//console.log(data);
                    	console.log(request);
-                   
+
                	}
            	});
 			//wthrcook = getCookie("wthr");
@@ -174,6 +174,32 @@
 	  		document.getElementById("OverlayImage").style.backgroundImage =WeatherImage;
 	  	}
 
+			function checkDate() {
+					var d = new Date();
+					var time = new Date();
+					var hour = time.getHours();
+					var timebg;
+					if (hour >= 6 && hour < 8) {
+						//sunrise background - preset 1
+						timebg = "";
+						presets(1);
+					} else if (hour >= 8 && hour < 17) {
+						//day background - preset 2
+						timebg = "";
+						presets(2);
+					} else if (hour >= 17 && hour <19) {
+						//sunset background - preset 3
+						timebg = "";
+						presets(3);
+					} else {
+						//night background - preset 4
+						timebg = "";
+						presets(4);
+					}
+					document.getElementById("time").innerHTML = d.toLocaleTimeString();
+			}
+			setInterval(checkDate, 1000);
+
     </script>
 
 	</head>
@@ -186,6 +212,9 @@
 	  		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/2000px-Speaker_Icon.svg.png" alt="Volume!" style="width:30px;height:30px">
 	  	</div>
 
+			<div id="DayNight">
+				<div id="time"></div>
+			</div>
 
 	  <div id="WeatherControl">
 		  <div>
@@ -214,7 +243,7 @@
 		  <button onclick='loadSong("Wind-Mark_DiAngelo-1940285615.mp3")'>Wind Blowing</button>
 	  </div>
 
-	  
+
 	  <form id="PresetSettings" method="post">
 	  	  <input type = "checkbox" class="presetbox" id="saveorload">
 		  <button onclick='presets(1); return false;'>1</button>

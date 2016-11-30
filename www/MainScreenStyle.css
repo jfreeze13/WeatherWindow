@@ -95,3 +95,9 @@ body
 	border-radius: 4%;
 	padding: 3px;
 }
+
+#DayNight{
+	position: fixed;
+	left: 30px;
+	top: 30px;
+}
