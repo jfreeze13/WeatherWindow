@@ -99,7 +99,7 @@ body
 #myBtn
 {
 	position: fixed;
-	left: 50px;
+	left: 16px;
 	top: 50px;
 	padding: 20px;
 	border-radius: 10px;
@@ -187,3 +187,15 @@ ul.tab li a:focus, .active {
 
 /* B U T T O N S*/
 
+#DayNight{
+	position: fixed;
+	left: 30px;
+	top: 30px;
+}
+
+input[type="checkbox"]
+{
+	position: fixed;
+	right: 30px;
+	top: 30px;
+}
