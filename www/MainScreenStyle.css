@@ -185,6 +185,22 @@ ul.tab li a:focus, .active {
     border-top: none;
 }
 
+img[onclick^="changeSeason"], img[onclick^="changeWeather"]
+{
+	border-radius: 10px;
+	margin: 10px;
+}
+
+img[onclick^="changeSeason"]:hover
+{
+	box-shadow: 10px 10px 10px black;
+}
+
+img[onclick^="changeWeather"]:hover
+{
+	background-color: #e0e3e3;
+}
+
 /* B U T T O N S*/
 
 #DayNight{
