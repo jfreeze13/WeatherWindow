@@ -209,11 +209,11 @@ img[onclick^="changeWeather"]:hover
 	top: 40px;
 	width: 76px;
 	height: 35px;
-	padding-left: 10px;
+	padding-left: 7px;
 	padding-right: 10px;
 	border-radius: 10px;
 	background-color: rgba(0, 126, 204, 1);
-	font-size: 20px;
+	font-size: 18px;
 	font-family: "Times New Roman", Times, serif;
 	
 }
