@@ -1,345 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+<head>
 	<meta charset="utf-8"/>
-	  <title>Weather Window</title>
-	  <link rel="stylesheet" type="text/css" href="MainScreenStyle.css">
+	<title>Weather Window</title>
+	<link rel="stylesheet" type="text/css" href="MainScreenStyle.css">
 
-	  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-	  <script src="/menu.js"></script>
-	  <script language="javascript" type="text/javascript">
-	  	var SeasonCook=0;
-	  	var WeatherCook=0;
-	  	var user;
-	  	var wthrcook=0;
-	  	var ssncook=0;
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<!-- <script src="/menu.js"></script> -->
+	<script language="javascript" type="text/javascript">
+	var SeasonCook=0;
+	var WeatherCook=0;
+	var user;
+	var wthrcook=0;
+	var ssncook=0;
 
-			//getCookie, checkCookie functions (modified) from w3schools
-			function getCookie(cname) {
-			    var name = cname + "=";
-			    var ca = document.cookie.split(';');
-			    for(var i = 0; i < ca.length; i++) {
-			        var c = ca[i];
-			        while (c.charAt(0) == ' ') {
-			            c = c.substring(1);
-			        }
-			        if (c.indexOf(name) == 0) {
-			            return c.substring(name.length, c.length);
-			        }
-			    }
-			    return "";
+	//getCookie, checkCookie functions (modified) from w3schools
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
 			}
-
-			var checkCookie = function() {
-			    user=getCookie("username");
-			    if (user != "") {
-			        document.getElementById("cookieuser").innerHTML = (user);
-			    } else {
-						window.location = "/Login.html\r\n";
-			    }
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
 			}
+		}
+		return "";
+	}
 
-			//logoutfunction
-			function logOut(){
-				document.cookie=" username=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-				document.cookie ="chk=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
-				document.cookie ="wthr=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
-				document.cookie ="ssn=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
-				document.cookie ="presNum=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
-			}
+	var checkCookie = function() {
+		user=getCookie("username");
+		if (user != "") {
+			document.getElementById("cookieuser").innerHTML = (user);
+		} else {
+			window.location = "/Login.html\r\n";
+		}
+	}
+
+	//logoutfunction
+	function logOut(){
+		document.cookie=" username=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+		document.cookie ="chk=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
+		document.cookie ="wthr=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
+		document.cookie ="ssn=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
+		document.cookie ="presNum=deleted; expires=Thu, 01 Jan 1920 00:00:00 GMT";
+	}
 
 
-	 	function loadSong(AudioFileName){
-		  var player=document.getElementById('player');
-			var sourceaudio=document.getElementById('player');
-		  sourceaudio.src=AudioFileName;
-		  player.load(); //just start buffering (preload)
-		  player.play(); //start playing
+	function loadSong(AudioFileName){
+		var player=document.getElementById('player');
+		var sourceaudio=document.getElementById('player');
+		sourceaudio.src=AudioFileName;
+		player.load(); //just start buffering (preload)
+		player.play(); //start playing
+	}
+
+	function presets(option){
+		console.log(WeatherCook);
+		console.log(SeasonCook);
+		if(document.getElementById('saveorload').checked){
+			console.log("checked");
+			document.cookie ="chk=checked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="presNum="+option+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+		}else{
+			console.log("unchecked");
+			document.cookie ="chk=unchecked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="presNum="+option+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
+			document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
 		}
 
-		function presets(option){
-			console.log(WeatherImage);
-			console.log(Imageurl);
-			if(document.getElementById('saveorload').checked){
-				console.log("checked");
-				document.cookie ="chk=checked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="presNum="+option+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-			}else{
-				console.log("unchecked");
-				document.cookie ="chk=unchecked; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="presNum="+option+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="wthr="+String(WeatherCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-				document.cookie ="ssn="+String(SeasonCook)+"; expires=Thu, 01 Jan 2020 00:00:00 GMT";
-			}
+		$.ajax({
+			url: '../cgi-bin/PresetsSave.py',  // lecture 8 script to query the pizza database
 
-			$.ajax({
-               	url: '../cgi-bin/PresetsSave.py',  // lecture 8 script to query the pizza database
+			data: {                       // the data to send
 
-               	data: {                       // the data to send
+				usr: user
+			},
 
-                   	usr: user
-               	},
+			type: "POST",                  // GET or POST
 
-               	type: "POST",                  // GET or POST
+			dataType: "text",             // html format
 
-               	dataType: "text",             // html format
-
-               	success: function(response) {   // function to execute upon a successful request
-               		console.log("success for database!");
-               		if(!(document.getElementById('saveorload').checked)){
-                   		console.log("Fetching Cookies");
-                   		ssncook = getCookie("ssn");
-                   		console.log(ssncook);
-                   		wthrcook = getCookie("wthr");
-                   		console.log(wthrcook);
-                   		var SeasonImg=0;
-	  					if(ssncook == "\"url('flowing_grass.gif')\""){
-	  						SeasonImg = "url('flowing_grass.gif')";
-	  						console.log("in grass")
-	  					} else if (ssncook == "\"url('running_water.gif')\"") {
-	  						console.log("in water")
-	  						SeasonImg = "url('running_water.gif')";
-	  					} else if (ssncook == "\"url('foggy_mountain.gif')\"") {
-	  						console.log("in fog")
-	  						SeasonImg = "url('foggy_mountain.gif')";
-	  					} else if (ssncook == "\"url('cold_lake.gif')\"") {
-	  						console.log("in cold")
-	  						SeasonImg = "url('cold_lake.gif')";
-	  					}else{
-	  						console.log("in else")
-	  					}
-	  					document.body.style.backgroundImage = SeasonImg;
-
-	  					var WeatherImg=0;
-	  					if (wthrcook == 'none'){
-	  						WeatherImg = "none";
-	  					} else if (wthrcook == "\"url('falling_rain.gif')\""){
-	  						WeatherImg = "url(\"falling_rain.gif\")";
-	  					} else if (wthrcook == "\"url('falling_snow.gif')\"") {
-	  						WeatherImg = "url(\"falling_snow.gif\")";
-	  					} else if (wthrcook == "\"url('falling_leaves.gif')\"") {
-	  						WeatherImg = "url(\"falling_leaves.gif\")";
-	  					}
-	  					document.getElementById("OverlayImage").style.backgroundImage =WeatherImg;
-                   	}
-               	},
-
-               	error: function(request) {   // function to call when the request fails
-                   	console.log("error for database!");
-                   		//console.log(data);
-                   	console.log(request);
-
-               	}
-           	});
-			//wthrcook = getCookie("wthr");
-            //console.log(wthrcook);
-            //document.body.style.backgroundImage = "url(\'cold_lake.gif\')";;
-		}
-		function changeSeason(SeasonKey) {
-	  		// var SeasonImage=0;
-			var Imageurl = "url(\'" + SeasonKey + "\')"
-			console.log(Imageurl)
-			// var Cookurl = "url(\&apos;)" + SeasonKey + ".gif\&apos;)"
-	  		// if(SeasonKey == 'flowing_grass.gif'){
-// 				console.log("GRASS");
-// 	  			SeasonImage = "url(\"flowing_grass.gif\")";
-// 	  			SeasonCook='url(\'flowing_grass.gif\')';
-// 	  		} else if (SeasonKey == 'running_water.gif') {
-// 	  			SeasonImage = "url(\"running_water.gif\")";
-// 	  			SeasonCook='url(\'running_water.gif\')';
-// 	  		} else if (SeasonKey == 'foggy_mountain.gif') {
-// 	  			SeasonImage = "url(\"foggy_mountain.gif\")";
-// 	  			SeasonCook='url(\'foggy_mountain.gif\')';
-// 	  		} else if (SeasonKey == 'cold_lake.gif') {
-// 	  			SeasonImage = "url(\'cold_lake.gif\')";
-// 	  			SeasonCook="url(\'cold_lake.gif\')";
-// 	  		}
-	  		document.body.style.backgroundImage = Imageurl;
-
-	  	}
-
-	  	function changeWeather(WeatherKey) {
-			var WeatherImage = "url(\'" + WeatherKey + "\')"
-	  		// var WeatherImage=0;
-// 	  		if (WeatherKey == 'none'){
-// 	  			WeatherImage = "none";
-// 	  			WeatherCook='none';
-// 	  		} else if (WeatherKey == 'falling_rain.gif'){
-// 	  			WeatherImage = "url(\"falling_rain.gif\")";
-// 	  			WeatherCook='url(\'falling_rain.gif\')';
-// 	  		} else if (WeatherKey == 'falling_snow.gif') {
-// 	  			WeatherImage = "url(\"falling_snow.gif\")";
-// 	  			WeatherCook='url(\'falling_snow.gif\')';
-// 	  		} else if (WeatherKey == 'falling_leaves.gif') {
-// 	  			WeatherImage = "url(\"falling_leaves.gif\")";
-// 	  			WeatherCook="url(\'falling_leaves.gif\')";
-// 	  		}
-	  		document.getElementById("OverlayImage").style.backgroundImage =WeatherImage;
-	  	}
-
-			function checkDate() {
-					var d = new Date();
-					var time = new Date();
-					var hour = time.getHours();
-					var timecheck = document.getElementById("daynightcheck").checked;
-					if (timecheck == true) {
-						if (hour >= 6 && hour < 8) {
-							//sunrise background - preset 1
-							presets(1);
-						} else if (hour >= 8 && hour < 17) {
-							//day background - preset 2
-							presets(2);
-						} else if (hour >= 17 && hour <19) {
-							//sunset background - preset 3
-							presets(3);
-						} else {
-							//night background - preset 4
-							presets(4);
-						}
+			success: function(response) {   // function to execute upon a successful request
+				console.log("success for database!");
+				if(!(document.getElementById('saveorload').checked)){
+					console.log("Fetching Cookies");
+					ssncook = getCookie("ssn");
+					console.log(ssncook);
+					wthrcook = getCookie("wthr");
+					console.log(wthrcook);
+					var SeasonImg=0;
+					if(ssncook == "\"url('flowing_grass.gif')\""){
+						SeasonImg = "url('flowing_grass.gif')";
+						console.log("in grass")
+					} else if (ssncook == "\"url('running_water.gif')\"") {
+						console.log("in water")
+						SeasonImg = "url('running_water.gif')";
+					} else if (ssncook == "\"url('foggy_mountain.gif')\"") {
+						console.log("in fog")
+						SeasonImg = "url('foggy_mountain.gif')";
+					} else if (ssncook == "\"url('cold_lake.gif')\"") {
+						console.log("in cold")
+						SeasonImg = "url('cold_lake.gif')";
+					}else{
+						console.log("in else")
 					}
-					document.getElementById("time").innerHTML = d.toLocaleTimeString();
+					document.body.style.backgroundImage = SeasonImg;
+
+					var WeatherImg=0;
+					if (wthrcook == 'none'){
+						WeatherImg = "none";
+					} else if (wthrcook == "\"url('Images/Overlays/falling_rain.gif')\""){
+						WeatherImg = "url(\"Images/Overlays/falling_rain.gif\")";
+					} else if (wthrcook == "\"url('Images/Overlays/falling_snow.gif')\"") {
+						WeatherImg = "url(\"Images/Overlays/falling_snow.gif\")";
+					} else if (wthrcook == "\"url('Images/Overlays/falling_leaves.gif')\"") {
+						WeatherImg = "url(\"Images/Overlays/falling_leaves.gif\")";
+					}
+					document.getElementById("OverlayImage").style.backgroundImage =WeatherImg;
+				}
+			},
+
+			error: function(request) {   // function to call when the request fails
+				console.log("error for database!");
+				//console.log(data);
+				console.log(request);
+
 			}
-			setInterval(checkDate, 1000);
-    </script>
+		});
+		//wthrcook = getCookie("wthr");
+		//console.log(wthrcook);
+		//document.body.style.backgroundImage = "url(\'cold_lake.gif\')";;
+	}
+	function changeSeason(SeasonKey) {
+		SeasonImage = "url(\'" + SeasonKey + "\')";
+		SeasonCook = "url(\'" + SeasonKey + "\')";
+		console.log(SeasonImage);
+		console.log(SeasonCook);
+		// if(SeasonKey == 'flowing_grass.gif'){
+		// 		SeasonImage = "url(\"flowing_grass.gif\")";
+		// 		SeasonCook='url(\'flowing_grass.gif\')';
+		// 	} else if (SeasonKey == 'running_water.gif') {
+		// 		SeasonImage = "url(\"running_water.gif\")";
+		// 		SeasonCook='url(\'running_water.gif\')';
+		// 	} else if (SeasonKey == 'foggy_mountain.gif') {
+		// 		SeasonImage = "url(\"foggy_mountain.gif\")";
+		// 		SeasonCook='url(\'foggy_mountain.gif\')';
+		// 	} else if (SeasonKey == 'cold_lake.gif') {
+		// 		SeasonImage = "url(\'cold_lake.gif\')";
+		// 		SeasonCook="url(\'cold_lake.gif\')";
+		// 	}
+		document.body.style.backgroundImage = SeasonImage;
 
-	</head>
+	}
 
-	<body onload="checkCookie(); ex">
-		<div id=OverlayImage>
-			<img href="http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif">
+	function changeWeather(WeatherKey) {
+		WeatherImage = "url(\'" + WeatherKey + "\')";
+		WeatherCook = 'url(\'' + WeatherKey + '\')';
+		console.log(WeatherImage);
+		console.log(WeatherCook);
+		// var WeatherImage=0;
+		// 	  		if (WeatherKey == 'none'){
+		// 	  			WeatherImage = "none";
+		// 	  			WeatherCook='none';
+		// 	  		} else if (WeatherKey == 'falling_rain.gif'){
+		// 	  			WeatherImage = "url(\"falling_rain.gif\")";
+		// 	  			WeatherCook='url(\'falling_rain.gif\')';
+		// 	  		} else if (WeatherKey == 'falling_snow.gif') {
+		// 	  			WeatherImage = "url(\"falling_snow.gif\")";
+		// 	  			WeatherCook='url(\'falling_snow.gif\')';
+		// 	  		} else if (WeatherKey == 'falling_leaves.gif') {
+		// 	  			WeatherImage = "url(\"falling_leaves.gif\")";
+		// 	  			WeatherCook="url(\'falling_leaves.gif\')";
+		// 	  		}
+		document.getElementById("OverlayImage").style.backgroundImage = WeatherImage;
+	}
+
+	function checkDate() {
+		var d = new Date();
+		var time = new Date();
+		var hour = time.getHours();
+		var timecheck = document.getElementById("daynightcheck").checked;
+		if (timecheck == true) {
+			if (hour >= 6 && hour < 8) {
+				//sunrise background - preset 1
+				presets(1);
+			} else if (hour >= 8 && hour < 17) {
+				//day background - preset 2
+				presets(2);
+			} else if (hour >= 17 && hour <19) {
+				//sunset background - preset 3
+				presets(3);
+			} else {
+				//night background - preset 4
+				presets(4);
+			}
+		}
+		document.getElementById("time").innerHTML = d.toLocaleTimeString();
+	}
+	setInterval(checkDate, 1000);
+	</script>
+
+</head>
+
+<body onload="checkCookie();">
+	<div id=OverlayImage>
+		<img href="http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif">
+	</div>
+
+	<div id="DayNight">
+		<input type="checkbox" id=daynightcheck>
+		<div id="time"></div>
+	</div>
+
+	<!-- <div id="WeatherControl">
+	<div>
+	<button onclick="changeSeason('flowing_grass.gif')">Spring</button>
+	<button onclick="changeSeason('running_water.gif')">Summer</button>
+	<button onclick="changeSeason('foggy_mountain.gif')">Autumn</button>
+	<button onclick="changeSeason('cold_lake.gif')">Winter</button>
+</div>
+<div>
+<button onclick="changeWeather('none')">None</button>
+<button onclick="changeWeather('falling_rain.gif')">Rainy</button>
+<button onclick="changeWeather('falling_snow.gif')">Snowy</button>
+<button onclick="changeWeather('falling_leaves.gif')">Leafy</button>
+</div>
+</div>
+
+<div id="SoundSettings">
+<audio id="player" controls="controls" loop>
+<source src="sourceaudio" type="audio/mpeg">
+Your browser does not support this!
+</audio>
+<br>
+<button onclick='loadSong(null)'>Off</button>
+<button onclick='loadSong("rain2hard.mp3")'>Hard Rain</button>
+<button onclick='loadSong("rain-and-birds.mp3")'>Rain With Birds</button>
+<button onclick='loadSong("Wind-Mark_DiAngelo-1940285615.mp3")'>Wind Blowing</button>
+</div> -->
+
+
+<form id="PresetSettings" method="post">
+	<input type = "checkbox" class="presetbox" id="saveorload">
+	<button onclick='presets(1); return false;'>1</button>
+	<button onclick='presets(2); return false;'>2</button>
+	<button onclick='presets(3); return false;'>3</button>
+	<button onclick='presets(4); return false;'>4</button>
+</form>
+
+<div id="AccountFunctions">
+	<!--Here, pull Username, and have a Logout button-->
+	<h2 id="cookieuser"></h2>
+	<form id="login" method="post" action="/cgi-bin/logout.py" >
+		<input type="submit" onclick="logOut()" name="Logout" value="Log Out">
+	</form>
+</div>
+
+
+<button id="myBtn">Open Modal</button>
+
+<div id="menu" class="modal">
+	<div class="content">
+		<span class="close">×</span>
+		<ul class="tab">
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Background')">Background</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Weather')">Weather</a></li>
+			<li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Sound Effects')">Sound Effects</a></li>
+		</ul>
+		<div id="Background" class="tabcontent">
+			<h2>Backgrounds</h2>
+			<img src="/flowing_grass.gif" width="200" height="150" id="GrassThumb" onclick="changeSeason('flowing_grass.gif')">
+			<img src="/foggy_mountain.gif" width="200" height="150" id="MountainThumb" onclick="changeSeason('foggy_mountain.gif')">
+			<img src="/running_water.gif" width="200" height="150" id="StreamThumb" onclick="changeSeason('running_water.gif')">
+			<img src="/cold_lake.gif" width="200" height="150" id="LakeThumb" onclick="changeSeason('cold_lake.gif')">
+			<img src="/Resources/Autumn 1.gif" width="200" height="150" id="Fall1Thumb" onclick="changeSeason('Resources/Autumn 1.gif')">
+			<img src="/Resources/Autumn 2.gif" width="200" height="150" id="Fall2Thumb" onclick="changeSeason('Resources/Autumn 2.gif')">
+			<img src="/Resources/Autumn 3.gif" width="200" height="150" id="Fall3Thumb" onclick="changeSeason('Resources/Autumn 3.gif')">
+			<img src="/Resources/Autumn 4.gif" width="200" height="150" id="Fall4Thumb" onclick="changeSeason('Resources/Autumn 4.gif')">
+			<img src="/Resources/Yosemite Falls Autumn.gif" width="200" height="150" id="YosemiteThumb" onclick="changeSeason('Resources/Yosemite Falls Autumn.gif')">
 		</div>
 
-		<div id="DayNight">
-			<input type="checkbox" id=daynightcheck>
-			<div id="time"></div>
+		<div id="Weather" class="tabcontent">
+			<h2>Weather</h2>
+			<img src="/Images/Overlays/falling_leaves.gif" width="200" height="150" id="leavesThumb" onclick="changeWeather('Images/Overlays/falling_leaves.gif')">
+			<img src="/Images/Overlays/falling_rain.gif" width="200" height="150" id="rainThumb" onclick="changeWeather('Images/Overlays/falling_rain.gif')">
+			<img src="/Images/Overlays/falling_snow.gif" width="200" height="150" id="snowThumb" onclick="changeWeather('Images/Overlays/falling_snow.gif')">
 		</div>
 
-	  <!-- <div id="WeatherControl">
-		  <div>
-			  <button onclick="changeSeason('flowing_grass.gif')">Spring</button>
-			  <button onclick="changeSeason('running_water.gif')">Summer</button>
-			  <button onclick="changeSeason('foggy_mountain.gif')">Autumn</button>
-			  <button onclick="changeSeason('cold_lake.gif')">Winter</button>
-			 </div>
-		  <div>
-		    <button onclick="changeWeather('none')">None</button>
-		    <button onclick="changeWeather('falling_rain.gif')">Rainy</button>
-		    <button onclick="changeWeather('falling_snow.gif')">Snowy</button>
-		    <button onclick="changeWeather('falling_leaves.gif')">Leafy</button>
-		  </div>
-	  </div>
-
-	  <div id="SoundSettings">
-	  	<audio id="player" controls="controls" loop>
-	  		<source src="sourceaudio" type="audio/mpeg">
-	  		Your browser does not support this!
-	  	</audio>
-	  	<br>
-		  <button onclick='loadSong(null)'>Off</button>
-		  <button onclick='loadSong("rain2hard.mp3")'>Hard Rain</button>
-		  <button onclick='loadSong("rain-and-birds.mp3")'>Rain With Birds</button>
-		  <button onclick='loadSong("Wind-Mark_DiAngelo-1940285615.mp3")'>Wind Blowing</button>
-	  </div> -->
-
-
-	  <form id="PresetSettings" method="post">
-	  	  <input type = "checkbox" class="presetbox" id="saveorload">
-		  <button onclick='presets(1); return false;'>1</button>
-		  <button onclick='presets(2); return false;' >2</button>
-		  <button onclick='presets(3); return false;'>3</button>
-		  <button onclick='presets(4); return false;'>4</button>
-	  </form>
-
-	  <div id="AccountFunctions">
-	  	<!--Here, pull Username, and have a Logout button-->
-		<h2 id="cookieuser"></h2>
-		<form id="login" method="post" action="/cgi-bin/logout.py" >
-  			<input type="submit" onclick="logOut()" name="Logout" value="Log Out">
-  		</form>
-	  </div>
-
-
-		<button id="myBtn">Open Modal</button>
-
-		<div id="menu" class="modal">
-		  <div class="content">
-		    <span class="close">×</span>
-			<ul class="tab">
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Background')">Background</a></li>
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Weather')">Weather</a></li>
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Sound Effects')">Sound Effects</a></li>
-			</ul>
-			<div id="Background" class="tabcontent">
-				<h2>Backgrounds</h2>
-				<img src="/flowing_grass.gif" width="200" height="150" id="GrassThumb" onclick="changeSeason('flowing_grass.gif')">
-			    <img src="/foggy_mountain.gif" width="200" height="150" id="MountainThumb" onclick="changeSeason('foggy_mountain.gif')">
-				<img src="/running_water.gif" width="200" height="150" id="StreamThumb" onclick="changeSeason('running_water.gif')">
-				<img src="/cold_lake.gif" width="200" height="150" id="LakeThumb" onclick="changeSeason('cold_lake.gif')">
-				<img src="/Resources/Autumn 1.gif" width="200" height="150" id="Fall1Thumb" onclick="changeSeason('Resources/Autumn 1.gif')">
-				<img src="/Resources/Autumn 2.gif" width="200" height="150" id="Fall2Thumb" onclick="changeSeason('Resources/Autumn 2.gif')">
-				<img src="/Resources/Autumn 3.gif" width="200" height="150" id="Fall3Thumb" onclick="changeSeason('Resources/Autumn 3.gif')">
-				<img src="/Resources/Autumn 4.gif" width="200" height="150" id="Fall4Thumb" onclick="changeSeason('Resources/Autumn 4.gif')">
-				<img src="/Resources/Yosemite Falls Autumn.gif" width="200" height="150" id="YosemiteThumb" onclick="changeSeason('Resources/Yosemite Falls Autumn.gif')">
-			</div>
-
-			<div id="Weather" class="tabcontent">
-				<h2>Weather</h2>
-				<img src="/Images/Overlays/falling_leaves.gif" width="200" height="150" id="leavesThumb" onclick="changeWeather('Images/Overlays/falling_leaves.gif')">
-				<img src="/Images/Overlays/falling_rain.gif" width="200" height="150" id="rainThumb" onclick="changeWeather('Images/Overlays/falling_rain.gif')">
-				<img src="/Images/Overlays/falling_snow.gif" width="200" height="150" id="snowThumb" onclick="changeWeather('Images/Overlays/falling_snow.gif')">
-			</div>
-
-			<div id="Sound Effects" class="tabcontent">
-				<h2>Sound Effects</h2>
-				<div id="TCR">
-					<audio controls>
-					  <source src="/14604__acclivity__tottenhamcourtroad.mp3" type="audio/mpeg" label="Blah">
-					Your browser does not support the audio element.
+		<div id="Sound Effects" class="tabcontent">
+			<h2>Sound Effects</h2>
+			<div id="TCR">
+				<audio controls>
+					<source src="/14604__acclivity__tottenhamcourtroad.mp3" type="audio/mpeg" label="Blah">
+						Your browser does not support the audio element.
 					</audio>
 					<h4 class="label" width="200">Tottenham Court Road</h4>
 				</div>
 			</div>
-		  </div>
-		</div>			  
-		  <script>
-			  function openCity(evt, cityName) {
- 			      var i, tabcontent, tablinks;
- 			      tabcontent = document.getElementsByClassName("tabcontent");
- 			      for (i = 0; i < tabcontent.length; i++) {
- 			          tabcontent[i].style.display = "none";
- 			      }
- 			      tablinks = document.getElementsByClassName("tablinks");
- 			      for (i = 0; i < tablinks.length; i++) {
- 			          tablinks[i].className = tablinks[i].className.replace(" active", "");
- 			      }
- 			      document.getElementById(cityName).style.display = "block";
- 			      evt.currentTarget.className += " active";
- 			  }
+		</div>
+	</div>
+	<script>
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
 
- 			  var modal = document.getElementById('menu');
+	var modal = document.getElementById('menu');
 
- 			  var btn = document.getElementById("myBtn");
+	var btn = document.getElementById("myBtn");
 
- 			  var span = document.getElementsByClassName("close")[0];
+	var span = document.getElementsByClassName("close")[0];
 
- 			  btn.onclick = function() {
- 			      modal.style.display = "block";
- 			  }
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
 
- 			  span.onclick = function() {
- 			      modal.style.display = "none";
- 			  }
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
 
- 			  window.onclick = function(event) {
- 			      if (event.target == modal) {
- 			          modal.style.display = "none";
- 			      }
- 			  }
-		  </script>
-	  </div>
-	  
-	  
-	</body>
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+	</script>
+</div>
+
+
+</body>
 </html>

@@ -100,7 +100,7 @@ body
 {
 	position: fixed;
 	left: 16px;
-	top: 50px;
+	top: 70px;
 	padding: 20px;
 	border-radius: 10px;
 }
@@ -190,12 +190,5 @@ ul.tab li a:focus, .active {
 #DayNight{
 	position: fixed;
 	left: 30px;
-	top: 30px;
-}
-
-input[type="checkbox"]
-{
-	position: fixed;
-	right: 30px;
 	top: 30px;
 }
