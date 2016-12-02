@@ -94,48 +94,17 @@
                    		wthrcook = getCookie("wthr");
 						wthrcook = wthrcook.split("\"")[1];
                    		console.log(wthrcook);
-                   		// var SeasonImg=0;
-// 	  					if(ssncook == "\"url('flowing_grass.gif')\""){
-// 	  						SeasonImg = "url('flowing_grass.gif')";
-// 	  						console.log("in grass")
-// 	  					} else if (ssncook == "\"url('running_water.gif')\"") {
-// 	  						console.log("in water")
-// 	  						SeasonImg = "url('running_water.gif')";
-// 	  					} else if (ssncook == "\"url('foggy_mountain.gif')\"") {
-// 	  						console.log("in fog")
-// 	  						SeasonImg = "url('foggy_mountain.gif')";
-// 	  					} else if (ssncook == "\"url('cold_lake.gif')\"") {
-// 	  						console.log("in cold")
-// 	  						SeasonImg = "url('cold_lake.gif')";
-// 	  					}else{
-// 	  						console.log("in else")
-// 	  					}
 	  					document.body.style.backgroundImage = ssncook;
-
-	  					// var WeatherImg=0;
-// 	  					if (wthrcook == 'none'){
-// 	  						WeatherImg = "none";
-// 	  					} else if (wthrcook == "\"url('falling_rain.gif')\""){
-// 	  						WeatherImg = "url(\"falling_rain.gif\")";
-// 	  					} else if (wthrcook == "\"url('falling_snow.gif')\"") {
-// 	  						WeatherImg = "url(\"falling_snow.gif\")";
-// 	  					} else if (wthrcook == "\"url('falling_leaves.gif')\"") {
-// 	  						WeatherImg = "url(\"falling_leaves.gif\")";
-// 	  					}
 	  					document.getElementById("OverlayImage").style.backgroundImage =wthrcook;
                    	}
                	},
 
                	error: function(request) {   // function to call when the request fails
                    	console.log("error for database!");
-                   	//console.log(data);
                    	console.log(request);
 
                	}
            	});
-			//wthrcook = getCookie("wthr");
-            //console.log(wthrcook);
-            //document.body.style.backgroundImage = "url(\'cold_lake.gif\')";;
 		}
 		function changeSeason(SeasonKey) {
 	  		var SeasonImage=0;
@@ -143,21 +112,6 @@
 			SeasonCook='url(\'' + SeasonKey + '\')';
 			console.log(SeasonImage);
 			console.log(SeasonCook);
-			// var Cookurl = "url(\&apos;)" + SeasonKey + ".gif\&apos;)"
-	  		// if(SeasonKey == 'flowing_grass.gif'){
-// 				console.log("GRASS");
-// 	  			SeasonImage = "url(\"flowing_grass.gif\")";
-// 	  			SeasonCook='url(\'flowing_grass.gif\')';
-// 	  		} else if (SeasonKey == 'running_water.gif') {
-// 	  			SeasonImage = "url(\"running_water.gif\")";
-// 	  			SeasonCook='url(\'running_water.gif\')';
-// 	  		} else if (SeasonKey == 'foggy_mountain.gif') {
-// 	  			SeasonImage = "url(\"foggy_mountain.gif\")";
-// 	  			SeasonCook='url(\'foggy_mountain.gif\')';
-// 	  		} else if (SeasonKey == 'cold_lake.gif') {
-// 	  			SeasonImage = "url(\'cold_lake.gif\')";
-// 	  			SeasonCook="url(\'cold_lake.gif\')";
-// 	  		}
 	  		document.body.style.backgroundImage = SeasonImage;
 
 	  	}
@@ -167,20 +121,7 @@
 			WeatherImage = 'url(\'' + WeatherKey + '\')';
 			WeatherCook = 'url(\'' + WeatherKey + '\')';
 	  		console.log(WeatherImage);
-// 	  		if (WeatherKey == 'none'){
-// 	  			WeatherImage = "none";
-// 	  			WeatherCook='none';
-// 	  		} else if (WeatherKey == 'falling_rain.gif'){
-// 	  			WeatherImage = "url(\"falling_rain.gif\")";
-// 	  			WeatherCook='url(\'falling_rain.gif\')';
-// 	  		} else if (WeatherKey == 'falling_snow.gif') {
-// 	  			WeatherImage = "url(\"falling_snow.gif\")";
-// 	  			WeatherCook='url(\'falling_snow.gif\')';
-// 	  		} else if (WeatherKey == 'falling_leaves.gif') {
-// 	  			WeatherImage = "url(\"falling_leaves.gif\")";
-// 	  			WeatherCook="url(\'falling_leaves.gif\')";
-// 	  		}
-	  		document.getElementById("OverlayImage").style.backgroundImage = String(WeatherImage);
+			document.getElementById("OverlayImage").style.backgroundImage = String(WeatherImage);
 	  	}
 
 			function checkDate() {
@@ -233,35 +174,37 @@
 	  </div> -->
 
 
-	  <form id="PresetSettings" method="post">
-	  	  <input type = "checkbox" class="presetbox" id="saveorload">
-		  <button onclick='presets(1); return false;'>1</button>
-		  <button onclick='presets(2); return false;' >2</button>
-		  <button onclick='presets(3); return false;'>3</button>
-		  <button onclick='presets(4); return false;'>4</button>
-	  </form>
+	  
 
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
 		<h2 id="cookieuser"></h2>
+	  	<form id="PresetSettings" method="post">
+	  		<input type = "checkbox" class="presetbox" id="saveorload">
+	  		<button onclick='presets(1); return false;'>1</button>
+	  		<button onclick='presets(2); return false;' >2</button>
+	  		<button onclick='presets(3); return false;'>3</button>
+	  		<button onclick='presets(4); return false;'>4</button>
+	  	</form>
 		<form id="login" method="post" action="/cgi-bin/logout.py" >
   			<input type="submit" onclick="logOut()" name="Logout" value="Log Out">
   		</form>
 	  </div>
 
-
+	  	
+	  	<!--Modal and tabs (modified) from w3schools-->
 		<button id="myBtn">Menu</button>
 
 		<div id="menu" class="modal">
 		  <div class="content">
 		    <span class="close">×</span>
 			<ul class="tab">
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Background')">Background</a></li>
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Weather')">Weather</a></li>
-			  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Sound Effects')">Sound Effects</a></li>
+			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Background')">Background</a></li>
+			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Weather')">Weather</a></li>
+			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sound Effects')">Sound Effects</a></li>
 			</ul>
 			<div id="Background" class="tabcontent">
-				<h2>Backgrounds</h2>
+				<img src="/Resources/Default.gif" width="200" height="150" id="DefaultThumb" onclick="changeSeason('Resources/Default.gif')">
 				<img src="/flowing_grass.gif" width="200" height="150" id="GrassThumb" onclick="changeSeason('flowing_grass.gif')">
 			    <img src="/foggy_mountain.gif" width="200" height="150" id="MountainThumb" onclick="changeSeason('foggy_mountain.gif')">
 				<img src="/running_water.gif" width="200" height="150" id="StreamThumb" onclick="changeSeason('running_water.gif')">
@@ -274,7 +217,6 @@
 			</div>
 
 			<div id="Weather" class="tabcontent">
-				<h2>Weather</h2>
 				<img src="/Images/Overlays/None.png" width="200" height="150" id="noneThumb" onclick="changeWeather('none')">
 				<img src="/Images/Overlays/falling_leaves.gif" width="200" height="150" id="leavesThumb" onclick="changeWeather('Images/Overlays/falling_leaves.gif')">
 				<img src="/Images/Overlays/falling_rain.gif" width="200" height="150" id="rainThumb" onclick="changeWeather('Images/Overlays/falling_rain.gif')">
@@ -285,7 +227,6 @@
 			</div>
 
 			<div id="Sound Effects" class="tabcontent">
-				<h2>Sound Effects</h2>
 				<div id="TCR">
 					<audio controls>
 					  <source src="/14604__acclivity__tottenhamcourtroad.mp3" type="audio/mpeg" label="Blah">
@@ -295,44 +236,44 @@
 				</div>
 			</div>
 		  </div>
-		</div>			  
-		  <script>
-			  function openCity(evt, cityName) {
- 			      var i, tabcontent, tablinks;
- 			      tabcontent = document.getElementsByClassName("tabcontent");
- 			      for (i = 0; i < tabcontent.length; i++) {
- 			          tabcontent[i].style.display = "none";
- 			      }
- 			      tablinks = document.getElementsByClassName("tablinks");
- 			      for (i = 0; i < tablinks.length; i++) {
- 			          tablinks[i].className = tablinks[i].className.replace(" active", "");
- 			      }
- 			      document.getElementById(cityName).style.display = "block";
- 			      evt.currentTarget.className += " active";
- 			  }
+		</div>		
+		
+		<!--Tab and modal script from w3schools-->
+		<script>
+			  function openTab(evt, cityName) {
+			      var i, tabcontent, tablinks;
+			      tabcontent = document.getElementsByClassName("tabcontent");
+			      for (i = 0; i < tabcontent.length; i++) {
+			          tabcontent[i].style.display = "none";
+			      }
+			      tablinks = document.getElementsByClassName("tablinks");
+			      for (i = 0; i < tablinks.length; i++) {
+			          tablinks[i].className = tablinks[i].className.replace(" active", "");
+			      }
+			      document.getElementById(cityName).style.display = "block";
+			      evt.currentTarget.className += " active";
+			  }
 
- 			  var modal = document.getElementById('menu');
+			  var modal = document.getElementById('menu');
 
- 			  var btn = document.getElementById("myBtn");
+			  var btn = document.getElementById("myBtn");
 
- 			  var span = document.getElementsByClassName("close")[0];
+			  var span = document.getElementsByClassName("close")[0];
 
- 			  btn.onclick = function() {
- 			      modal.style.display = "block";
- 			  }
+			  btn.onclick = function() {
+			      modal.style.display = "block";
+			  }
 
- 			  span.onclick = function() {
- 			      modal.style.display = "none";
- 			  }
+			  span.onclick = function() {
+			      modal.style.display = "none";
+			  }
 
- 			  window.onclick = function(event) {
- 			      if (event.target == modal) {
- 			          modal.style.display = "none";
- 			      }
- 			  }
-		  </script>
-	  </div>
-	  
-	  
+			  window.onclick = function(event) {
+			      if (event.target == modal) {
+			          modal.style.display = "none";
+			      }
+			  }
+		</script>
+	  </div>  
 	</body>
 </html>
