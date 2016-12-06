@@ -193,7 +193,7 @@ img[onclick^="changeWeather"]:hover
 	cursor: pointer;
 }
 
-#Background, #Weather, div[id="Sound Effects"]
+#Background, #Weather, div[id="Sound Effects"], div[id="Manage Account"]
 {
 	background-color: #e0e3e3;
 }
