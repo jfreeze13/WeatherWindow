@@ -194,6 +194,11 @@ img[onclick^="changeWeather"]:hover
 	cursor: pointer;
 }
 
+#Weather
+{
+	background-color: #e0e3e3;
+}
+
 /* B U T T O N S*/
 
 #DayNight{
