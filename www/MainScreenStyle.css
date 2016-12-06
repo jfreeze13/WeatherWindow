@@ -1,7 +1,6 @@
 html
 {
 	text-align: center;
-	/*background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");*/
 	background-color: #7abdc9;
 	height:100%;
 	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -10,7 +9,7 @@ html
 body
 {
 	background-color: #7abdc9;
-	background-image: url("https://static1.squarespace.com/static/529d50bfe4b01de6ed943b27/55c7c40ae4b043398e49e30f/55c8d892e4b0f16d8cc08b82/1439226613346/sky.gif?format=2500w");
+	background-image: url("/Resources/Default.gif");
 	height: 100%;
 	margin-top: 0px;
 	margin-right: 0px;
@@ -56,16 +55,14 @@ body
 
 #PresetSettings
 {
-	position: fixed;
-	left: 30px;
-	bottom: 30px;
-	border-style: solid;
-	border-width: 2px;
 	background-color: black;
-	opacity: 0.5;
-	border-radius: 4%;
-	padding: 3px;
+	opacity: 0.7;
+	padding: 10px;
+}
 
+button[onclick^="presets"]
+{
+	display: inline-block;
 }
 
 #SoundSettings
@@ -85,13 +82,151 @@ body
 #AccountFunctions
 {
 	position: fixed;
-	right: 30px;
-	bottom: 30px;
+	right: 0px;
+	bottom: 0px;
 	color: white;
 	border-style: solid;
 	border-width: 2px;
 	background-color: black;
-	opacity: 0.5;
+	opacity: 0.7;
 	border-radius: 4%;
 	padding: 3px;
+}
+
+h2[id="cookieuser"]
+{
+	margin: 10px;
+	margin-bottom: 0px;
+}
+
+
+/*Modal and Tab CSS (modified) from w3schools*/
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+ul.tab li {float: left;}
+
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+img[onclick^="changeSeason"], img[onclick^="changeWeather"]
+{
+	border-radius: 10px;
+	margin: 10px;
+}
+
+img[onclick^="changeSeason"]:hover
+{
+	box-shadow: 10px 10px 10px black;
+	cursor: pointer;
+}
+
+img[onclick^="changeWeather"]:hover
+{
+	background-color: #e0e3e3;
+	cursor: pointer;
+}
+
+/* B U T T O N S*/
+
+#DayNight{
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	position: fixed;
+	right: 0px;
+	top: 0px;
+}
+
+#myBtn
+{
+	position: fixed;
+	right: 0px;
+	top: 40px;
+	width: 76px;
+	height: 35px;
+	padding-left: 7px;
+	padding-right: 10px;
+	border-radius: 10px;
+	background-color: rgba(0, 126, 204, 1);
+	font-size: 18px;
+	font-family: "Times New Roman", Times, serif;
+	
+}
+
+#myBtn:hover
+{
+	cursor: pointer;
+}
+
+#presetsLabel
+{
+	margin-top: 5px;
+	margin-bottom: -2px;
 }

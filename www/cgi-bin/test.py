@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import cgitb
 import cgi
 import sqlite3
@@ -6,7 +8,7 @@ import json # used to send data back in JSON format
 cgitb.enable() # enable debugging output in some cases
 
 print "Content-type: application/json"
-print() # without printing a blank line, the "end of script output before headers" error will occur
+print # without printing a blank line, the "end of script output before headers" error will occur
 #print("hello there!")
 form = cgi.FieldStorage()
 

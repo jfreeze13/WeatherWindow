@@ -1,4 +1,4 @@
-#!"C:\Program Files (x86)\Ampps\python\python.exe"
+#!/usr/bin/env python
 # Lecture 08 - jQuery and Ajax
 
 import cgitb
