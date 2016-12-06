@@ -190,11 +190,10 @@ img[onclick^="changeSeason"]:hover
 
 img[onclick^="changeWeather"]:hover
 {
-	background-color: #e0e3e3;
 	cursor: pointer;
 }
 
-#Weather
+#Background, #Weather, div[id="Sound Effects"]
 {
 	background-color: #e0e3e3;
 }
