@@ -1,3 +1,4 @@
+#!"C:\Program Files (x86)\Ampps\python\python.exe"
 #!/usr/bin/env python
 
 #Author: Jessica Freeze
@@ -5,7 +6,7 @@
 #Import stuff
 #sqlite3 used for ease of versioning over Mysql
 import cgitb
-import Cookie
+import http.cookies as Cookie
 import os
 import cgi
 import hashlib
@@ -28,27 +29,27 @@ cursor = conn.cursor()
 
 if chck =='checked':
     if presetNum == '0':
-        print presetNum
-        print
+        print (presetNum)
+        print ()
         cursor.execute("UPDATE users SET curback=?, curover=? WHERE username=?", (ssn,wthr,username))
 
     elif presetNum == '1':
         cursor.execute("UPDATE users SET back1=?, over1=? WHERE username=?", (ssn, wthr, username))
-        print
+        print ()
     elif presetNum == '2':
-        print
+        print ()
         cursor.execute("UPDATE users SET back2=?, over2=? WHERE username=?", (ssn, wthr, username))
 
     elif presetNum == '3':
         cursor.execute("UPDATE users SET back3=?, over3=? WHERE username=?", (ssn, wthr, username))
-        print
+        print ()
     elif presetNum == '4':
 
         cursor.execute("UPDATE users SET back4=?, over4=? WHERE username=?", (ssn, wthr, username))
-        print
+        print ()
     else:
-        print "problem in update"
-        print
+        print ("problem in update")
+        print ()
 
 
     #cursor.execute("SELECT curover FROM users WHERE username=?", [username])
@@ -78,8 +79,8 @@ else:
         c['presNum'] = presetNum
         c['chk']['Path'] = '/'
         c['chk'] = chck
-        print c
-        print
+        print (c)
+        print ()
     elif presetNum == '2':
         cursor.execute("SELECT over2 FROM users WHERE username=?", [username])
         user = str(cursor.fetchone()[0])
@@ -96,8 +97,8 @@ else:
         c2['presNum'] = presetNum
         c2['chk']['Path'] = '/'
         c2['chk'] = chck
-        print c2
-        print
+        print (c2)
+        print ()
     elif presetNum == '3':
         cursor.execute("SELECT over3 FROM users WHERE username=?", [username])
         user = str(cursor.fetchone()[0])
@@ -114,8 +115,8 @@ else:
         c3['presNum'] = presetNum
         c3['chk']['Path'] = '/'
         c3['chk'] = chck
-        print c3
-        print
+        print (c3)
+        print ()
     elif presetNum == '4':
         cursor.execute("SELECT over4 FROM users WHERE username=?", [username])
         user = str(cursor.fetchone()[0])
@@ -132,11 +133,11 @@ else:
         c4['presNum'] = presetNum
         c4['chk']['Path'] = '/'
         c4['chk'] = chck
-        print c4
-        print
+        print (c4)
+        print ()
     else:
-        print "problem in update"
-        print
+        print ("problem in update")
+        print ()
 
 conn.commit()
 conn.close()

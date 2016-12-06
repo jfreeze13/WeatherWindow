@@ -1,9 +1,10 @@
+#!"C:\Program Files (x86)\Ampps\python\python.exe"
 #!/usr/bin/env python
 import cgitb
 
 cgitb.enable()
 
-import Cookie
+import http.cookies as Cookie
 import os
 import json
 import cgi
@@ -18,7 +19,7 @@ login_form = cgi.FieldStorage()
 #nc['username']['expires'] = 'Thu, 01 Jan 1970 00:00:00 GMT'
 
 
-print "Status: 301 Moved"
-print "Location:/Login.html"
-print 
+print ("Status: 301 Moved")
+print ("Location:/Login.html")
+print ()
 
