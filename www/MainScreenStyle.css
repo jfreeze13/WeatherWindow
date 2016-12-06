@@ -198,6 +198,13 @@ img[onclick^="changeWeather"]:hover
 	background-color: #e0e3e3;
 }
 
+.sound
+{
+	display: inline-block;
+	border: 1px solid black;
+	margin: 10px;
+}
+
 /* B U T T O N S*/
 
 #DayNight{
