@@ -1,4 +1,3 @@
-#!"C:\Program Files (x86)\Ampps\python\python.exe"
 #!/usr/bin/env python
 
 #Author: Jessica Freeze
@@ -51,23 +50,23 @@ def check_exists (username):
 
 
 login_form = cgi.FieldStorage()
-print ("Content-Type: text/html\n\n")
-print ()
+print "Content-Type: text/html\n\n"
+print 
 
-print ('''<html>
+print '''<html>
     <head>
         <title>Sign-Up Results</title>
         <h1 id="Logout-header">
-			You're account has been created!
+			Your account has been created!
 		</h1>
     </head>
-        <body>''')
+        <body>'''
 
 
 
 
 if False:
-    print ('<h1>Please insert a Username and Password </h1>')
+    print '<h1>Please insert a Username and Password </h1>'
     #figure out how to bring back to login page
 else:
     username = login_form.getvalue('usernamefield')
@@ -76,14 +75,14 @@ else:
     #pizza = check_exists(username)
     #print('<h1> output', pizza,' </h1>')
     if check_exists(username):
-        print ('<h1>User account', username, 'already exists. Please return to login page </h1>')
+        print '<h1>User account', username, 'already exists. Please return to login page </h1>'
     else:
         insert_new_user(username, password)
-        print ('<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n')
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n'
         #print ("Location: login.html\n\n") #redirect to sign-up page
 
 
 
-print ('''
+print '''
         </body>
-    </html>''')
+    </html>'''

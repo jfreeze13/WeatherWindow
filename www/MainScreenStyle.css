@@ -190,8 +190,19 @@ img[onclick^="changeSeason"]:hover
 
 img[onclick^="changeWeather"]:hover
 {
-	background-color: #e0e3e3;
 	cursor: pointer;
+}
+
+#Background, #Weather, div[id="Sound Effects"], div[id="Manage Account"]
+{
+	background-color: #e0e3e3;
+}
+
+.sound
+{
+	display: inline-block;
+	border: 1px solid black;
+	margin: 10px;
 }
 
 /* B U T T O N S*/
@@ -229,4 +240,14 @@ img[onclick^="changeWeather"]:hover
 {
 	margin-top: 5px;
 	margin-bottom: -2px;
+}
+
+#deleteAccount
+{
+	font-family: "Times New Roman";
+	font-size: 1rem;
+	background-color: #1a1b9c;
+	width: 5rem;
+	height: 4rem;
+	color: white;
 }
