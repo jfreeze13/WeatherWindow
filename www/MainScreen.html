@@ -228,11 +228,28 @@
 		  <div class="content">
 		    <span class="close">×</span>
 			<ul class="tab">
+			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Help')">Help</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Background')">Background</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Weather')">Weather</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sound Effects')">Sound Effects</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Account')">Manage Account</a></li>
 			</ul>
+			<div id="Help" class="tabcontent">
+				<h2>Welcome to Weather Window!</h2>
+				<h3>How to use:</h3>
+				<ol>
+				  <li>Choose which element you would like to modify</li>
+				  <li>Within that menu, make your choice of background</li>
+				</ol>
+				<p>And you're done!</p>
+				<h3>Presets</h3>
+				<ol>
+				  <li>To begin, set the window to the settings you would like to save into into a preset.</li>
+				  <li>Once your desired background and weather are set, check the box in the lower right hand corner.</li>
+				  <li>Click one of the four preset buttons (labeled 1-4) to save your preference, and then uncheck the box.</li>
+				  <li>When you would like to access a preset at a later date, simply leave the checkbox unchecked and click the preset button that you would like.</li>
+				</ol>
+			</div>
 			<div id="Background" class="tabcontent">
 				<img src="/Resources/Default.gif" width="200" height="150" id="DefaultThumb" onclick="changeSeason('Resources/Default.gif')">
 				<img src="/flowing_grass.gif" width="200" height="150" id="GrassThumb" onclick="changeSeason('flowing_grass.gif')">
