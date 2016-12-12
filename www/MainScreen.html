@@ -202,7 +202,7 @@
 	  </div> -->
 
 
-	  
+
 
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
@@ -220,7 +220,7 @@
   		</form>
 	  </div>
 
-	  	
+
 	  	<!--Modal and tabs (modified) from w3schools-->
 		<button id="myBtn">Settings</button>
 
@@ -270,7 +270,7 @@
 				<img src="/Images/Overlays/falling_snow.gif" width="200" height="150" id="snowThumb" onclick="changeWeather('Images/Overlays/falling_snow.gif')">
 				<img src="/Images/Overlays/Blizzard.gif" width="200" height="150" id="blizzardThumb" onclick="changeWeather('Images/Overlays/Blizzard.gif')">
 				<img src="/Images/Overlays/Blizzard2.gif" width="200" height="150" id="blizzard2Thumb" onclick="changeWeather('Images/Overlays/Blizzard2.gif')">
-				
+
 			</div>
 
 			<div id="Sound Effects" class="tabcontent">
@@ -324,17 +324,19 @@
 					<h4 class="label" width="200">Summer Day</h4>
 				</div>
 			</div>
+			<!--
 			<div id="Manage Account" class="tabcontent">
 				<button type="button" id="deleteAccount" onclick="">Delete Account</button>
 			</div>
+		-->
 			<div id="Manage Account" class="tabcontent">
 				<form id="deleteacc" method="post" action="/cgi-bin/deleteaccount.py" >
                     <button type="submit" id="deleteAccount" onclick="deleteaccount();return false;">Delete Account</button>
                 </form>
             </div>
 		  </div>
-		</div>		
-		
+		</div>
+
 		<!--Tab and modal script from w3schools-->
 		<script>
 			  function openTab(evt, cityName) {
@@ -371,6 +373,6 @@
 			      }
 			  }
 		</script>
-	  </div>  
+	  </div>
 	</body>
 </html>
