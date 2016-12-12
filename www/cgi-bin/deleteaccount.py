@@ -1,5 +1,5 @@
-#!/usr/bin/env python
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
+#!/usr/bin/env python
 
 #Author: Jessica Freeze
 #Code very closely sourced to Robert St Jacque
@@ -11,7 +11,7 @@ import datetime
 import hashlib
 import cgi
 import cgitb
-import Cookie
+import http.cookies as Cookie
 import os
 cgitb.enable()
 
@@ -32,8 +32,8 @@ nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
 username = nc['username'].value
 delete_user(username)
 
-print "Status: 301 Moved"
-print "Location:/Login.html"
-print
+print ("Status: 301 Moved")
+print ("Location:/Login.html")
+print ()
 
 
