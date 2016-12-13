@@ -29,11 +29,8 @@ def delete_user(username):
     conn.close()
 
 nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
-username = nc['username'].value
-delete_user(username)
+delete_user(nc['username'].value)
 
 print "Status: 301 Moved"
 print "Location:/Login.html"
 print
-
-

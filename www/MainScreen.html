@@ -74,6 +74,7 @@
                		console.log("success for connection! User Deleted");
                		console.log(response);
                		location.reload();
+									logOut();
                	},
 
                	error: function(request) {   // function to call when the request fails
@@ -82,7 +83,6 @@
 
                	}
            	});
-			logOut();
 		}
 
 		function presets(option){
@@ -174,7 +174,7 @@
 					}
 					document.getElementById("time").innerHTML = d.toLocaleTimeString();
 			}
-			setInterval(checkDate, 1000);
+			setInterval(checkDate, 1);
     </script>
 
 	</head>
@@ -331,9 +331,9 @@
 		-->
 			<div id="Manage Account" class="tabcontent">
 				<form id="deleteacc" method="post" action="/cgi-bin/deleteaccount.py" >
-                    <button type="submit" id="deleteAccount" onclick="deleteaccount();return false;">Delete Account</button>
-                </form>
-            </div>
+              <button type="submit" id="deleteAccount" onclick="deleteaccount();return false;">Delete Account</button>
+        </form>
+          </div>
 		  </div>
 		</div>
 
