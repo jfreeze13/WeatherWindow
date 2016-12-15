@@ -1,23 +1,6 @@
 #!/usr/bin/env python
-import cgitb
 
-cgitb.enable()
-
-import Cookie
-import os
-import json
-import cgi
-login_form = cgi.FieldStorage()
-
-#stored_cookie_string = os.environ.get('HTTP_COOKIE')
-#c = Cookie.SimpleCookie(stored_cookie_string)
-
-#nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
-#nc['username'] = c['username']
-#nc['username']['path'] = '/weatherwindow'
-#nc['username']['expires'] = 'Thu, 01 Jan 1970 00:00:00 GMT'
-
-
+#redirect to login page after logout function called.
 print "Status: 301 Moved"
 print "Location:/Login.html"
 print 

@@ -2,35 +2,30 @@
 #!"C:\Program Files (x86)\Ampps\python\python.exe"
 
 #Author: Jessica Freeze
-#Code very closely sourced to Robert St Jacque
-#CSC210 Lecture 10 github repository
 
-#import _mysql
 import sqlite3
-import datetime
-import hashlib
-import cgi
-import cgitb
 import Cookie
 import os
-cgitb.enable()
 
 def delete_user(username):
 
+    #Connect to databse and create a cursor for movement in db
     conn = sqlite3.connect('weatherwindow.db')
     cursor = conn.cursor()
 
-    #Need to include here an error message if user already exists and double check
-    #prepared statement
-
+    #delete row with given username from database. Because username is the primary key, this deletes the user.
     cursor.execute("DELETE FROM users WHERE username=?", [username])
 
+    #commits the database changes and closes the connection so we don't overload ports.
     conn.commit()
     conn.close()
 
+#Pull cookie which contains name of current user.
 nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
+#Call function to delete user with username found in cookie
 delete_user(nc['username'].value)
 
+#make it so page auto redirects to login page when this script is called instead of python page.
 print "Status: 301 Moved"
 print "Location:/Login.html"
 print

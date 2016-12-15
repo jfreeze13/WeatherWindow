@@ -11,58 +11,53 @@ import cgi
 import hashlib
 import sqlite3
 
+#enable useful error messages
 cgitb.enable()
 
+
+#pull cookie values to get current window settings and user info
 nc = Cookie.SimpleCookie(os.environ.get('HTTP_COOKIE'))
 username = nc['username'].value
 presetNum = nc['presNum'].value
 ssn = nc['ssn'].value
 wthr = nc['wthr'].value
 chck = nc['chk'].value
-#print ("Status: 301 Moved")
-#print ("Location:/MainScreen.html")
-#print()
+
+#connect to database and make cursor for database movement
 conn = sqlite3.connect('weatherwindow.db')
 cursor = conn.cursor()
-#print(presetNum)
 
+#If user has indicated that they would like to update presets
 if chck =='checked':
+    #determine which preset button was clicked
     if presetNum == '0':
+        #background debugging code not seen by user. Checks that current backgrounds are able to be saved porpoerly.
         print presetNum
         print
         cursor.execute("UPDATE users SET curback=?, curover=? WHERE username=?", (ssn,wthr,username))
 
+    #save current background to the preset in database
     elif presetNum == '1':
         cursor.execute("UPDATE users SET back1=?, over1=? WHERE username=?", (ssn, wthr, username))
         print
     elif presetNum == '2':
         print
         cursor.execute("UPDATE users SET back2=?, over2=? WHERE username=?", (ssn, wthr, username))
-
     elif presetNum == '3':
         cursor.execute("UPDATE users SET back3=?, over3=? WHERE username=?", (ssn, wthr, username))
         print
     elif presetNum == '4':
-
         cursor.execute("UPDATE users SET back4=?, over4=? WHERE username=?", (ssn, wthr, username))
         print
     else:
         print "problem in update"
         print
 
-
-    #cursor.execute("SELECT curover FROM users WHERE username=?", [username])
-    #user =str(cursor.fetchone()[0])
-    #print(user)
-    #print(presetNum)
-    #print(ssn)
-    #print(wthr)
-    #print()
-
+#if user would like to pull up a preset.
 else:
 
+    #pull background and weather overlay from database preset selected and overwrite cookies to these values
     if presetNum == '1':
-        #print(presetNum)
         cursor.execute("SELECT over1 FROM users WHERE username=?", [username])
         user = str(cursor.fetchone()[0])
         cursor.execute("SELECT back1 FROM users WHERE username=?", [username])
@@ -138,5 +133,6 @@ else:
         print "problem in update"
         print 
 
+#commit databse changes and close connection
 conn.commit()
 conn.close()
