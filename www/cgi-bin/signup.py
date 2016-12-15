@@ -59,8 +59,15 @@ print
 
 
 if False:
-    print '<h1>Please insert a Username and Password </h1>'
-    #figure out how to bring back to login page
+    print '''<html>
+                <head>
+                    <title>Sign-Up Results</title>
+                    <h1 id="Logout-header">
+            			Please insert a Username and Password
+            		</h1>
+                </head>
+                    <body>'''
+    print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">\n'
 else:
     username = login_form.getvalue('usernamefield')
     password = login_form.getvalue('passwordfield')
@@ -69,6 +76,7 @@ else:
     #print('<h1> output', pizza,' </h1>')
     if check_exists(username):
         print '<h1>User account', username, 'already exists. Please return to login page </h1>'
+        print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">\n'
     else:
         insert_new_user(username, password)
         print '''<html>
