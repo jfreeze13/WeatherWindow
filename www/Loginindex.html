@@ -2,14 +2,15 @@
 <html>
 	<head>
 
-
-        <!-- include JS -->
         <script type="text/javascript" src="login_ajax.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js">
 		//getCookie function from w3schools
 		function getCookie(cname) {
+			//Format name to match cookie format
 		    var name = cname + "=";
+		    //Split cookies
 		    var ca = document.cookie.split(';');
+		    //break up cookie string to be compared
 		    for(var i = 0; i < ca.length; i++) {
 		        var c = ca[i];
 		        while (c.charAt(0) == ' ') {
@@ -29,36 +30,6 @@
 		    }
 		}
 
-		function doTheThing()
-		{
-			jQuery(document).ready(function){
-				jQuery(".button").click(function){
-					var username = $$("input#usernamefield").val();
-					var password = $$("input#passwordfield").val();
-					jQuery.ajax({
-						type: POST,
-						data: {usernamefield:username, passwordfield:password},
-						url: "/cgi-bin/login_check.py",
-						complete: function(data){
-							jQuery("#result").html(data)},
-						});
-						return false;
-				});
-			}
-		}
-
-		// function authh(){
-		// 	var auth = function(){
-		// 		var username = document.getElementById("usernamefield").value;
-		// 		var password = document.getElementById("passwordfield").value;
-		// 		$.ajax({
-		// 			method: "POST",
-		// 			url: "/login_check.py",
-		// 			dataType: "script"
-		// 		});
-		// 		console.log(data);
-		// 		document.getElementById("result").innerHTML = "nobody cares";
-		// 	}}
 
 		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
