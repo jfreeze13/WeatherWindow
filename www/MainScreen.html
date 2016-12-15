@@ -257,7 +257,8 @@
 				<img src="/Resources/Waterfall.gif" width="200" height="150" id="WaterfallThumb" onclick="changeSeason('Resources/Waterfall.gif')">
 			</div>
 
-			<!--Contents of Weather customization tab-->
+			<!--Contents of Weather customization tab
+				The images are all set to a specific height and width for aesthetic-->
 			<div id="Weather" class="tabcontent">
 				<img src="Images/Overlays/Nothing.png" width="200" height="150" id="noneThumb" onclick="changeWeather('none')">
 				<img src="/Images/Overlays/falling_leaves.gif" width="200" height="150" id="leavesThumb" onclick="changeWeather('Images/Overlays/falling_leaves.gif')">
@@ -267,7 +268,8 @@
 				<img src="/Images/Overlays/Blizzard2.gif" width="200" height="150" id="blizzard2Thumb" onclick="changeWeather('Images/Overlays/Blizzard2.gif')">
 
 			</div>
-
+			
+			<!--Contents of Sound Effects customization tab-->
 			<div id="Sound Effects" class="tabcontent">
 				<div class="sound">
 					<audio controls loop="loop">
@@ -319,22 +321,19 @@
 					<h4 class="label" width="200">Summer Day</h4>
 				</div>
 			</div>
-			<!--
+			
+			<!--Contents of Manage Account tab-->
 			<div id="Manage Account" class="tabcontent">
-				<button type="button" id="deleteAccount" onclick="">Delete Account</button>
-			</div>
-		-->
-			<div id="Manage Account" class="tabcontent">
-				<form id="deleteacc" method="post" action="/cgi-bin/deleteaccount.py" >
-              <button type="submit" id="deleteAccount" onclick="deleteaccount();return false;">Delete Account</button>
-        </form>
-          </div>
+				<form id="deleteacc" method="post" action="/cgi-bin/deleteaccount.py">
+              		<button type="submit" id="deleteAccount" onclick="deleteaccount();return false;">Delete Account</button>
+        		</form>
+          	</div>
 		  </div>
 		</div>
 
 		<!--Tab and modal script from w3schools-->
 		<script>
-			  function openTab(evt, cityName) {
+			  function openTab(evt, tab) {
 			      var i, tabcontent, tablinks;
 			      tabcontent = document.getElementsByClassName("tabcontent");
 			      for (i = 0; i < tabcontent.length; i++) {
@@ -344,7 +343,7 @@
 			      for (i = 0; i < tablinks.length; i++) {
 			          tablinks[i].className = tablinks[i].className.replace(" active", "");
 			      }
-			      document.getElementById(cityName).style.display = "block";
+			      document.getElementById(tab).style.display = "block";
 			      evt.currentTarget.className += " active";
 			  }
 
