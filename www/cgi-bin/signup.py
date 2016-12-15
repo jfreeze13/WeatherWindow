@@ -53,11 +53,12 @@ def check_exists (username):
 #Pull user given info from input fields
 login_form = cgi.FieldStorage()
 
+
+#information about success or failure of sign up for user
 print "Content-Type: text/html\n\n"
 print 
 
-
-
+#should never be seen by user but will be if not using html5.
 if False:
     print '''<html>
                 <head>
@@ -68,15 +69,19 @@ if False:
                 </head>
                     <body>'''
     print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">\n'
+
+#checks if user exists using check exists function
 else:
+    #pulls user given data from forms
     username = login_form.getvalue('usernamefield')
     password = login_form.getvalue('passwordfield')
 
-    #pizza = check_exists(username)
-    #print('<h1> output', pizza,' </h1>')
+    #user account already exists in database
     if check_exists(username):
         print '<h1>User account', username, 'already exists. Please return to login page </h1>'
+        #redirect to login page
         print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/Login.html\">\n'
+    #User not present in database yet, user saved into database
     else:
         insert_new_user(username, password)
         print '''<html>
@@ -87,6 +92,7 @@ else:
         		</h1>
             </head>
                 <body>'''
+        #redirect to mainscreen
         print '<META HTTP-EQUIV=refresh CONTENT=\"1;URL=/MainScreen.html\">\n'
         #print ("Location: login.html\n\n") #redirect to sign-up page
 
