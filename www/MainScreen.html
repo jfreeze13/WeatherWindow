@@ -4,9 +4,10 @@
 	<meta charset="utf-8"/>
 	  <title>Weather Window</title>
 	  <link rel="stylesheet" type="text/css" href="MainScreenStyle.css">
-
+	  <!--Link scripts to use-->
 	  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	  <script src="/menu.js"></script>
+	  
 	  <script language="javascript" type="text/javascript">
 	  	var SeasonCook=0;
 	  	var WeatherCook=0;
@@ -178,32 +179,20 @@
     </script>
 
 	</head>
-
+	<!--Body section, set to run the checkCookie() function when the page loads-->
 	<body onload="checkCookie();">
+		
 		<div id=OverlayImage>
 			<img href="http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif">
 		</div>
 
+		<!--Div for the real time clock-->
 		<div id="DayNight">
 			<input type="checkbox" id=daynightcheck>
 			<div id="time"></div>
 		</div>
-
-	  <!-- <div id="SoundSettings">
-	  	<audio id="player" controls="controls" loop>
-	  		<source src="sourceaudio" type="audio/mpeg">
-	  		Your browser does not support this!
-	  	</audio>
-	  	<br>
-		  <button onclick='loadSong(null)'>Off</button>
-		  <button onclick='loadSong("rain2hard.mp3")'>Hard Rain</button>
-		  <button onclick='loadSong("rain-and-birds.mp3")'>Rain With Birds</button>
-		  <button onclick='loadSong("Wind-Mark_DiAngelo-1940285615.mp3")'>Wind Blowing</button>
-	  </div> -->
-
-
-
-
+		
+	  <!--Div for account-related buttons: window preset settings and logout button-->
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
 		<h2 id="cookieuser"></h2>
@@ -223,10 +212,12 @@
 
 	  	<!--Modal and tabs (modified) from w3schools-->
 		<button id="myBtn">Settings</button>
-
+		<!--Div for the modal-styled menu-->
 		<div id="menu" class="modal">
 		  <div class="content">
+			<!--Button to close the modal-->
 		    <span class="close">×</span>
+			<!--Settings tabs-->
 			<ul class="tab">
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Help')">Help</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Background')">Background</a></li>
@@ -234,6 +225,8 @@
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sound Effects')">Sound Effects</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Account')">Manage Account</a></li>
 			</ul>
+			
+			<!--Contents of Help tab-->
 			<div id="Help" class="tabcontent">
 				<h2>Welcome to Weather Window!</h2>
 				<h3>How to use:</h3>
@@ -248,8 +241,9 @@
 				  <p>2. Once your desired background and weather are set, check the box in the lower right hand corner.</p>
 				  <p>3. Click one of the four preset buttons (labeled 1-4) to save your preference, and then uncheck the box.</p>
 				  <p>4. When you would like to access a preset at a later date, simply leave the checkbox unchecked and click the preset button that you would like.</p>
-
 			</div>
+			
+			<!--Contents of Background customization tab-->
 			<div id="Background" class="tabcontent">
 				<img src="/Resources/Default.gif" width="200" height="150" id="DefaultThumb" onclick="changeSeason('Resources/Default.gif')">
 				<img src="/flowing_grass.gif" width="200" height="150" id="GrassThumb" onclick="changeSeason('flowing_grass.gif')">
@@ -263,6 +257,7 @@
 				<img src="/Resources/Waterfall.gif" width="200" height="150" id="WaterfallThumb" onclick="changeSeason('Resources/Waterfall.gif')">
 			</div>
 
+			<!--Contents of Weather customization tab-->
 			<div id="Weather" class="tabcontent">
 				<img src="Images/Overlays/Nothing.png" width="200" height="150" id="noneThumb" onclick="changeWeather('none')">
 				<img src="/Images/Overlays/falling_leaves.gif" width="200" height="150" id="leavesThumb" onclick="changeWeather('Images/Overlays/falling_leaves.gif')">

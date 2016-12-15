@@ -87,17 +87,23 @@
 
         </script>
 
+		<!--Link to a .css file to use for styling-->
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
-
+		
+		<!--Tab label-->
 		<title>Login</title>
+		
+		<!--Welcome message for the top of the page-->
 		<h1 id="Welcome-header">
 			Welcome to Weather Window!
 		</h1>
 	</head>
+	<!--Break twice for whitespace-->
 	<br><br>
-	<body>
+	<!--Body section, set to run the checkCookie() function when the page loads-->
 	<body onload="checkCookie()">
 		<h2>LOGIN</h2>
+		<!--Login form with text field (username), password field (password), and submit button-->
 		<form id="login" method="post" action="/cgi-bin/login_check.py">
 			Username: <input type="text" required="required" name="usernamefield" id="usernamefield"><br><br>
 
@@ -108,6 +114,7 @@
 		</form>
 
 		Don't have an account?
+		<!--Link to signup page in case user does not already have an account-->
 		<a href="Signup.html">Sign up here.</a>
-		</body>
+	</body>
 </html>

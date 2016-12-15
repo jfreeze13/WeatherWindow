@@ -25,16 +25,22 @@
 			}
 		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
-
+		
+		<!--Tab label-->
 		<title>Sign Up</title>
+		
+		<!--Page header-->
 		<h1 id="Welcome-header">
 			Welcome to Weather Window!
 		</h1>
 	</head>
 	<br><br>
+
+	<!--Body section, set to run the checkCookie() function when the page loads-->
 	<body onload="checkCookie()">
 		<h2>SIGN UP</h2>
 
+		<!--Signup form with text field (username), password field (password), and submit button-->
 		<form id="login" method = "post" action="/cgi-bin/signup.py">
 			Username: <input type="text" required = "required" name="usernamefield"><br><br>
 			Password: <input type="password" required = "required" name="passwordfield"><br><br>
@@ -43,6 +49,7 @@
 			<p class="result"></p>
 		</form>
 		Already have an account?
+		<!--Link to signup page in case user does not already have an account-->
 		<a href="Login.html">Log in here.</a>
 	</body>
 </html>
