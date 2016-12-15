@@ -4,19 +4,29 @@
 		<script>
 			//getCookie functions from w3schools
 			function getCookie(cname) {
+					//variable name used to search
 					var name = cname + "=";
+					//splits cookie into parts based on ";" and put into an array
 					var ca = document.cookie.split(';');
+					//for every name/value pair in the array
 					for(var i = 0; i < ca.length; i++) {
+							//value in the array at index i
 							var c = ca[i];
+							//gets rid of spaces if there are any
 							while (c.charAt(0) == ' ') {
 									c = c.substring(1);
 							}
+							//if the name in the array at index i is the same as the cname
 							if (c.indexOf(name) == 0) {
+									//return the value of the cookie
 									return c.substring(name.length, c.length);
 							}
 					}
+					//return "" if cookie isn't found
 					return "";
 			}
+
+			//Checks if there is a cookie, redirects to MainScreen if a user is logged in
 			var checkCookie = function() {
 					var user=getCookie("username");
 					if (user != "") {
@@ -25,10 +35,10 @@
 			}
 		</script>
 		<link rel="stylesheet" type="text/css" href="LoginStyle.css">
-		
+
 		<!--Tab label-->
 		<title>Sign Up</title>
-		
+
 		<!--Page header-->
 		<h1 id="Welcome-header">
 			Welcome to Weather Window!

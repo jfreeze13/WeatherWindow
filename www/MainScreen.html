@@ -7,7 +7,7 @@
 	  <!--Link scripts to use-->
 	  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 	  <script src="/menu.js"></script>
-	  
+
 	  <script language="javascript" type="text/javascript">
 	  	var SeasonCook=0;
 	  	var WeatherCook=0;
@@ -17,20 +17,29 @@
 
 			//getCookie, checkCookie functions (modified) from w3schools
 			function getCookie(cname) {
-			    var name = cname + "=";
+					//variable name used to search
+					var name = cname + "=";
+					//splits cookie into parts based on ";" and put into an array
 			    var ca = document.cookie.split(';');
+					//for every name/value pair in the array
 			    for(var i = 0; i < ca.length; i++) {
-			        var c = ca[i];
+							//value in the array at index i
+							var c = ca[i];
+							//gets rid of spaces if there are any
 			        while (c.charAt(0) == ' ') {
 			            c = c.substring(1);
 			        }
+							//if the name in the array at index i is the same as the cname
 			        if (c.indexOf(name) == 0) {
+									//return the value of the cookie
 			            return c.substring(name.length, c.length);
 			        }
 			    }
+					//return "" if cookie isn't found
 			    return "";
 			}
 
+			//Checks if there is a cookie, finds the username, and displays it on the page
 			var checkCookie = function() {
 			    user=getCookie("username");
 			    if (user != "") {
@@ -153,11 +162,14 @@
 			document.getElementById("OverlayImage").style.backgroundImage = String(WeatherImage);
 	  	}
 
+			//function for displaying the date, changing presets based on time, etc.
 			function checkDate() {
 					var d = new Date();
 					var time = new Date();
 					var hour = time.getHours();
+					//checks if the checkbox for the time is check
 					var timecheck = document.getElementById("daynightcheck").checked;
+					//if checkbox is checked, display preset depending on the time
 					if (timecheck == true) {
 						if (hour >= 6 && hour < 8) {
 							//sunrise background - preset 1
@@ -173,15 +185,17 @@
 							presets(4);
 						}
 					}
+					//displays time on page
 					document.getElementById("time").innerHTML = d.toLocaleTimeString();
 			}
+			//updates every millisecond
 			setInterval(checkDate, 1);
     </script>
 
 	</head>
 	<!--Body section, set to run the checkCookie() function when the page loads-->
 	<body onload="checkCookie();">
-		
+
 		<div id=OverlayImage>
 			<img href="http://68.media.tumblr.com/00ce33ba22ab2574dcbf2b5ffe3cbefb/tumblr_mtyk1xWdBM1s5jjtzo1_500.gif">
 		</div>
@@ -191,7 +205,7 @@
 			<input type="checkbox" id=daynightcheck>
 			<div id="time"></div>
 		</div>
-		
+
 	  <!--Div for account-related buttons: window preset settings and logout button-->
 	  <div id="AccountFunctions">
 	  	<!--Here, pull Username, and have a Logout button-->
@@ -225,7 +239,7 @@
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Sound Effects')">Sound Effects</a></li>
 			  <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'Manage Account')">Manage Account</a></li>
 			</ul>
-			
+
 			<!--Contents of Help tab-->
 			<div id="Help" class="tabcontent">
 				<h2>Welcome to Weather Window!</h2>
@@ -242,7 +256,7 @@
 				  <p>3. Click one of the four preset buttons (labeled 1-4) to save your preference, and then uncheck the box.</p>
 				  <p>4. When you would like to access a preset at a later date, simply leave the checkbox unchecked and click the preset button that you would like.</p>
 			</div>
-			
+
 			<!--Contents of Background customization tab-->
 			<div id="Background" class="tabcontent">
 				<img src="/Resources/Default.gif" width="200" height="150" id="DefaultThumb" onclick="changeSeason('Resources/Default.gif')">
@@ -268,7 +282,7 @@
 				<img src="/Images/Overlays/Blizzard2.gif" width="200" height="150" id="blizzard2Thumb" onclick="changeWeather('Images/Overlays/Blizzard2.gif')">
 
 			</div>
-			
+
 			<!--Contents of Sound Effects customization tab-->
 			<div id="Sound Effects" class="tabcontent">
 				<div class="sound">
@@ -321,7 +335,7 @@
 					<h4 class="label" width="200">Summer Day</h4>
 				</div>
 			</div>
-			
+
 			<!--Contents of Manage Account tab-->
 			<div id="Manage Account" class="tabcontent">
 				<form id="deleteacc" method="post" action="/cgi-bin/deleteaccount.py">
